@@ -1,4 +1,4 @@
 angular.module('foodZen.home', [])
-.controller(function(){
+.controller('HomeController', function(){
   console.log('home controller so running');
 });
