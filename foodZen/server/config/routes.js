@@ -6,9 +6,7 @@ var helpers = require('./helpers.js');
 module.exports = function (app, express) {
 
   app.get('/api/recipes/', recipeController);
-  app.post('/api/ingredients/', ingredientController);
-
-
+  app.post('/api/ingredients/', ingredientController.addIngredient);
 
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
