@@ -1,0 +1,10 @@
+# files
+
+.DS_Store
+.AppleDouble
+.LSOverride
+azure.err
+iisnode.yml
+
+# directories
+bower_components/
