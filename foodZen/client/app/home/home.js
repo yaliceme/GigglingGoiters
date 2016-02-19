@@ -26,8 +26,28 @@ angular.module('foodZen.home', [])
     $scope.ingredient = '';
   };
 
-  $scope.getRecipes = function() {
-    console.log('get request for recipes');
+  $scope.getRecipes = function(IngredientArray) {
+    return $http({
+      method: 'GET',
+      url: '/api/recipes',
+      data: IngredientArray
+    }).then(function (res) {
+      console.log('got dem recipes ', res);
+    }, function (error) {
+      console.error('error with getting recipes');
+    });
+  };
+
+  $scope.deleteIngredient = function(ingredient) {
+    return $http({
+      method: 'DELETE',
+      url: '/api/ingredients',
+      data: ingredient
+    }).then(function (res) {
+      console.log('success delete ingredient');
+    }, function (error) {
+      console.error('error with deleting recipes');
+    })
   };
   console.log('home controller so running');
 });
