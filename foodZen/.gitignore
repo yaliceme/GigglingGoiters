@@ -5,6 +5,7 @@
 .LSOverride
 azure.err
 iisnode.yml
+server/env/env.js
 
 # directories
 bower_components/
