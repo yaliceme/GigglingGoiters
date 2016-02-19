@@ -1,4 +1,4 @@
-angular.module('foodZen', ['foodZen.home, ngRoute'])
+angular.module('foodZen', ['foodZen.home', 'ngRoute'])
 .config(function($routeProvider){
   $routeProvider
   .when('/home', {
