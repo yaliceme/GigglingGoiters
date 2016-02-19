@@ -1,1 +1,6 @@
-<h2>Made it to the home page</h2>
+<h2>Add the ingredients that you have!</h2>
+
+<input ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
+<button type="submit" ng-click="addIngredient()">add ingredient</button>
+<button type="submit" ng-click="getRecipes()">Get Recipes</button>
+
