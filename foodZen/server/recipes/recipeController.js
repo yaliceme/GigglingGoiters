@@ -5,12 +5,13 @@ var request = require('request');
 
 module.exports = {
   getRecipes: function (req, res, next) {
+    // console.log("ingredient.getAllIngredients():", ingredient.getAllIngredients());
     var options = {
       url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients',
       headers: {
         'X-Mashape-Key': api_key
       },
-      q: {ingredients: 'apple, flour, butter'}
+      qs: {ingredients: ingredient.getAllIngredients()}
     };
     request.get(options, function (error, response, body) {
       if (error) {
