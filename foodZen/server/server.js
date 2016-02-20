@@ -10,6 +10,6 @@ require('./config/routes.js')(app, express);
 
 // start listening to requests on port 3000
 app.listen(3000);
-
+console.log("listing on port 3000");
 // export our app for testing and flexibility, required by index.js
 module.exports = app;
