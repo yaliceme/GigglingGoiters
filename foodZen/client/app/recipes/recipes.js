@@ -1,5 +1,6 @@
 angular.module('foodZen.recipes', [])
-.controller('RecipeController', function($scope){
-  $scope.recipes = ['recipe1', 'recipe2'];
+.controller('RecipeController', function($scope, Recipes){
+  var recipeObject = Recipes.getRecipes();
+  $scope.recipes =recipeObject.data;
 
 });

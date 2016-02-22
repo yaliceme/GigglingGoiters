@@ -1,4 +1,4 @@
-var ingredients = ['apple', 'flour', 'butter'];
+var ingredients = [];
 
 module.exports = {
   addIngredient: function (req, res, next) {
