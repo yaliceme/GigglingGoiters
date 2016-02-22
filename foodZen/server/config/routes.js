@@ -9,6 +9,7 @@ module.exports = function (app, express) {
   app.get('/api/recipes/', recipeController.getRecipes);
   app.post('/api/ingredients/', ingredientController.addIngredient);
   app.post('/api/users/', userController.addUser);
+  app.delete('/api/ingredients/', ingredientController.removeIngredient);
 
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler

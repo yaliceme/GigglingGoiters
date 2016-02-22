@@ -1,39 +1,14 @@
 var Ingredient = require('./ingredientModel.js');
+var helper = require('../config/helpers.js');
 
 module.exports = {
   addIngredient: function (req, res, next) {
     var ingredient = req.body.ingredient;
-    var email = 'a@a.com';
-    Ingredient.findOne({email: email}).exec(function( err, found) {
-      if( found ) {
-        found.ingredients.push(ingredient);
-        found.save(function( err, found ) {
-          if( err ) {
-            console.error( 'Error adding ingredient, ', err);
-            res.send(500);
-          } else {
-            console.log('successfully added ingredient to: ', found);
-            res.send(200, found);
-          }
-        });
-      } else {
-        var newIngredient =  new Ingredient({
-          email: email,
-          ingredients: [ingredient]
-        });
-        newIngredient.save(function(err, newUser){
-          if( err ) {
-            res.send( 500, err );
-          } else {
-            console.log('new user created in Ingredients db', newUser);
-            res.send(200, newUser);
-          }
-        });
-      }
-
-
+    helper.findUser(req, res, next, function( found ){
+      found.ingredients.push(ingredient);
     });
   },
+
   getAllIngredients: function (user_id, callback) {
     Ingredient.findOne({email: user_id}).exec(function(err, cart){
       if( err ) {
@@ -43,5 +18,13 @@ module.exports = {
        return callback ( cart );
       }
     });
+  },
+
+  removeIngredient: function ( req, res, next ) {
+    var ingredient = req.body.ingredient;
+    helper.findUser(req, res, next, function( found ){
+      found.splice(found.ingredients.indexOf(ingredient), 1);
+    });
+
   }
 };

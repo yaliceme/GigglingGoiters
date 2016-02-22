@@ -1,4 +1,5 @@
 var jwt = require('jwt-simple');
+var Ingredient = require('../ingredients/ingredientModel.js');
 
 module.exports = {
   errorLogger: function (error, req, res, next) {
@@ -29,6 +30,37 @@ module.exports = {
     } catch (error) {
       return next(error);
     }
+  },
 
+  findUser: function ( req, res, next, callback ) {
+    var ingredient = req.body.ingredient;
+    var email = 'a@a.com';
+    Ingredient.findOne({email: email}).exec(function( err, found) {
+      if( found ) {
+        callback ( found );
+        found.save(function( err, found ) {
+          if( err ) {
+            console.error( 'Error interacting with ingredient, ', err);
+            res.send(500);
+          } else {
+            console.log('successfully acted upon ingredient: ', found);
+            res.send(200, found);
+          }
+        });
+      } else {
+        var newIngredient =  new Ingredient({
+          email: email,
+          ingredients: [ingredient]
+        });
+        newIngredient.save(function(err, newUser){
+          if( err ) {
+            res.send( 500, err );
+          } else {
+            console.log('new user created in Ingredients db', newUser);
+            res.send(200, newUser);
+          }
+        });
+      }
+    });
   }
 };
