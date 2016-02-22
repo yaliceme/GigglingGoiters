@@ -11,7 +11,7 @@ angular.module('foodZen.home', [])
   $scope.postIngredient = function(ingredient) {
     return $http({
       method: 'POST',
-      url: '/api/ingredients',
+      url: 'http://localhost:3000/api/ingredients',
       data: {ingredient: ingredient}
     }).then(function(res){
       console.log('success with the ingredient post !');
@@ -23,6 +23,7 @@ angular.module('foodZen.home', [])
   $scope.addIngredient = function() {
     console.log('ingredient', $scope.ingredient);
     $scope.ingredients.push($scope.ingredient);
+    $scope.postIngredient($scope.ingredient);
     $scope.ingredient = '';
   };
 
