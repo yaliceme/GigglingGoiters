@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
-var Ingredient = require('../users/userModel.js');
+var User = require('../users/userModel.js');
 
 describe('User Model', function () {
 
