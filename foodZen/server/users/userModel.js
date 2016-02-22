@@ -7,7 +7,7 @@ var userSchema = mongoose.Schema({
   //   default: mongoose.Types.ObjectId
   // },
   user_id: Number,
-  email: String,
+  email: String
 
 });
 
