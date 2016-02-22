@@ -7,8 +7,15 @@ module.exports = {
     Ingredient.findOne({email: email}).exec(function( err, found) {
       if( found ) {
         found.ingredients.push(ingredient);
-        console.log('new ingredient added!', ingredient);
-        res.send(200, found);
+        found.save(function( err, found ) {
+          if( err ) {
+            console.error( 'Error adding ingredient, ', err);
+            res.send(500);
+          } else {
+            console.log('successfully added ingredient to: ', found);
+            res.send(200, found);
+          }
+        });
       } else {
         var newIngredient =  new Ingredient({
           email: email,

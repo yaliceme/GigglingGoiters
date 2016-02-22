@@ -45,11 +45,10 @@ module.exports = {
   getRecipes: function (req, res, next) {
     //Need to grab user_id from the request...
     //var user_id = req.session?
-    console.log('==============>>>>GET RECIPES');
     var user_id = 1;
     var email = 'a@a.com';
     Ingredient.getAllIngredients( email, function( cart ){
-      var ingredients = cart.ingredients;
+      var ingredients = cart.ingredients.join();
       var options = {
         url: findByIngredients,
         headers: {
@@ -57,6 +56,7 @@ module.exports = {
         },
         qs: {ingredients: ingredients}
       };
+      console.log('+++++> OPTIONS, ', options);
       request.get(options, function (error, response, body) {
         if (error) {
           console.log("Error with getRecipes request:", error);
