@@ -1,1 +1,1 @@
-ingredientModel.js
+var mongoose = require('mongoose');
