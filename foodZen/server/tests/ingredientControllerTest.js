@@ -44,11 +44,11 @@ describe('Ingredient Controller', function () {
   });
 
   // Lets start testing~!
-  it('should have a method to add a given ingredient', function () {
+  it('should have a method to add a given ingredient', function (done) {
 
   });
 
-  it('should have a method to read all ingredients', function () {
+  it('should have a method to read all ingredients', function (done) {
 
   });
 });

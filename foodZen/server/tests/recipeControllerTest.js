@@ -33,7 +33,7 @@ describe('Recipe Controller', function () {
   });
 
   // Lets start testing~!
-  it('should have a method to read all recipes', function () {
+  it('should have a method to read all recipes', function (done) {
 
   });
 });
