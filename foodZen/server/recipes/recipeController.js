@@ -61,6 +61,7 @@ module.exports = {
         if (error) {
           console.log("Error with getRecipes request:", error);
         } else {
+          console.log('special recipes for a@a.com cart: ', body);
           res.end(body);
         }
       });
