@@ -1,4 +1,4 @@
-angular.module('foodZen', ['foodZen.home', 'ngRoute'])
+angular.module('foodZen', ['foodZen.home', 'foodZen.recipes', 'ngRoute'])
 .config(function($routeProvider){
   $routeProvider
   .when('/home', {
@@ -8,5 +8,9 @@ angular.module('foodZen', ['foodZen.home', 'ngRoute'])
   .when('/recipes', {
     templateUrl: 'app/recipes/recipes.html',
     controller: 'RecipeController'
+  })
+  .when('/', {
+    templateUrl: 'app/home/home.html',
+    controller: 'HomeController'
   });
 });
