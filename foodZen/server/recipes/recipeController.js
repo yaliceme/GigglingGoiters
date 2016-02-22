@@ -1,25 +1,70 @@
-var ingredient = require('../ingredients/ingredientController.js');
+var Ingredient = require('../ingredients/ingredientController.js');
 var env = require('../env/env.js');
 var api_key = env.api_key;
 var request = require('request');
+var findByIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients';
+
+// module.exports = {
+//   getRecipes: function (req, res, next) {
+//     var options = {
+//       url: findByIngredients,
+//       headers: {
+//         'X-Mashape-Key': api_key
+//       },
+//       qs: {ingredients: Ingredient.getAllIngredients()}
+//     };
+//     request.get(options, function (error, response, body) {
+//       if (error) {
+//         console.log("Error with getRecipes request:", error);
+//       } else {
+//         res.end(body);
+//       }
+//     });
+//   }
+// };
+
 
 module.exports = {
-  getRecipes: function (req, res, next) {
-    // console.log("ingredient.getAllIngredients():", ingredient.getAllIngredients());
+  //Make temp functionality for non-logged in users
+  tempGetRecipes: function(req, res, next) {
     var options = {
-      url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients',
+      url: findByIngredients,
       headers: {
         'X-Mashape-Key': api_key
       },
-      qs: {ingredients: ingredient.getAllIngredients()}
+      qs: {ingredients: Ingredient.getAllIngredients()}
     };
     request.get(options, function (error, response, body) {
       if (error) {
-        console.log("You got an error:", error);
+        console.log("Error with getRecipes request:", error);
       } else {
-        // response.end(body);
         res.end(body);
       }
+    });
+  },
+  getRecipes: function (req, res, next) {
+    //Need to grab user_id from the request...
+    //var user_id = req.session?
+    var user_id = 1;
+    var email = 'a@a.com';
+    Ingredient.getAllIngredients( email, function( cart ){
+      var ingredients = cart.ingredients.join();
+      var options = {
+        url: findByIngredients,
+        headers: {
+          'X-Mashape-Key': api_key
+        },
+        qs: {ingredients: ingredients}
+      };
+      console.log('+++++> OPTIONS, ', options);
+      request.get(options, function (error, response, body) {
+        if (error) {
+          console.log("Error with getRecipes request:", error);
+        } else {
+          console.log('special recipes for a@a.com cart: ', body);
+          res.end(body);
+        }
+      });
     });
   }
 };
