@@ -21,7 +21,7 @@ angular.module('foodZen.services', [])
 
   var getRecipes = function (){
     return recipes;
-  }
+  };
 
   return {
     getRecipes: getRecipes,
