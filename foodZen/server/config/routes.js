@@ -6,11 +6,19 @@ var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
 
-  app.get('/api/recipes/', recipeController.getRecipes);
-  app.post('/api/ingredients/', ingredientController.addIngredient);
-  app.post('/api/users/', userController.addUser);
-  app.delete('/api/ingredients/', ingredientController.removeIngredient);
+  //Get Recipes
+  app.get('/api/recipes/', helpers.decode, recipeController.getRecipes);
 
+  //Adjust Ingredients
+  app.post('/api/ingredients/', helpers.decode, ingredientController.addIngredient);
+  app.delete('/api/ingredients/', helpers.decode, ingredientController.removeIngredient);
+
+  //Adjust users
+  app.post('/api/users/', userController.addUser);
+  app.post('/api/users/signin/', userController.signin);
+  app.post('/api/users/signup/', userController.signup);
+
+  
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
   app.use(helpers.errorLogger);

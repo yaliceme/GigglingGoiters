@@ -16,7 +16,7 @@ module.exports = {
   decode: function (req, res, next) {
     var token = req.headers['x-access-token'];
     var user;
-
+    console.log('==================================>>>>>>>', token);
     if (!token) {
       return res.send(403); // send forbidden if a token is not provided
     }
@@ -34,7 +34,7 @@ module.exports = {
 
   findUser: function ( req, res, next, callback ) {
     var ingredient = req.body.ingredient;
-    var email = 'a@a.com';
+    var email = req.user.email;
     Ingredient.findOne({email: email}).exec(function( err, found) {
       if( found ) {
         callback ( found );
