@@ -4,6 +4,12 @@ var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = mongoose.Schema({
+
+  // user_id: {
+  //   type: mongoose.Schema.ObjectId,
+  //   default: mongoose.Types.ObjectId
+  // },
+  user_id: Number,
   email: {
     type: String,
     required: true,
