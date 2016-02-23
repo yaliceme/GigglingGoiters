@@ -55,6 +55,7 @@ angular.module('foodZen.services', [])
     }).then(function(res){
       ingredients = res.data;
       console.log('success with getting ingredients !', ingredients);
+      return res.data;
     }, function(error){
       console.error('error with getting ingredients');
     });
