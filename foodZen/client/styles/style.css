@@ -1,6 +1,5 @@
 body {
-  padding: 0;
-  margin: 0;
+  padding-top: 50px;
   font-family: 'Playfair Display', serif;
 }
 
@@ -46,8 +45,6 @@ body {
 
 .header-image img{
   width: 100%;
-  height: 10;
-  overflow: hidden;
   z-index: 1;
 }
 
