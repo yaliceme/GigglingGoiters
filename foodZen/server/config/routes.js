@@ -10,7 +10,8 @@ module.exports = function (app, express) {
   app.post('/api/ingredients/', ingredientController.addIngredient);
   app.post('/api/users/', userController.addUser);
   app.delete('/api/ingredients/', ingredientController.removeIngredient);
-
+  app.post('/api/users/signin/', userController.signin);
+  app.post('/api/users/signup/', userController.signup);
   // If a request is sent somewhere other than the routes above,
   // send it through our custom error handler
   app.use(helpers.errorLogger);
