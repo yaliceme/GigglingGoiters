@@ -24,8 +24,13 @@ module.exports = {
 
   sendIngredients: function ( req, res, next ) {
     var email = req.user.email;
-    getAllIngredients( email, function( cart ) {
-      res.end(cart.ingredients);
+    module.exports.getAllIngredients( email, function( cart ) {
+      if( !cart ) {
+        res.end('You haven\'t added any ingredients to your cart yet!');
+      } else {
+        console.log('==========================>>>>>THE CART: ', cart);
+        res.json(cart.ingredients);
+      }
     });
   },
   
