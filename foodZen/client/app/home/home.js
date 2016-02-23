@@ -3,10 +3,12 @@ angular.module('foodZen.home', [])
   $scope.data = {};
 
   var initializeIngredients = function(){
-      $scope.data.ingredients = Ingredients.ingredients;
+      Ingredients.getIngredients()
+      .then(function (ingredients) {
+        $scope.data.ingredients = ingredients;
+        console.log("ingredients from controller", ingredients);
+      });
   };
-
-  $scope.ingredients = [];
 
   $scope.hitEnter = function($event) {
     if($event.which === 13) {
@@ -23,9 +25,10 @@ angular.module('foodZen.home', [])
   $scope.removeIngredient = function(ingredient) {
     //need to get this functionally to work with the full database
     console.log("removing ", ingredient);
-    Ingredients.deleteIngredient(ingredient);
-    $scope.data.ingredients.splice($scope.data.ingredients.indexOf(ingredient), 1);
-  }
+    Ingredients.deleteIngredient(ingredient, function () {
+      initializeIngredients();
+    });
+  };
 
   $scope.goRecipes = function() {
     $location.url('/recipes');

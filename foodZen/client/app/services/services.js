@@ -54,19 +54,20 @@ angular.module('foodZen.services', [])
       url: '/api/ingredients',
     }).then(function(res){
       ingredients = res.data;
-      console.log('success with getting ingredients !');
+      console.log('success with getting ingredients !', ingredients);
     }, function(error){
       console.error('error with getting ingredients');
     });
   };
 
-  var deleteIngredient = function(ingredient) {
+  var deleteIngredient = function(ingredient, callback) {
     return $http({
       method: 'DELETE',
       url: '/api/ingredients',
       data: ingredient
     }).then(function (res) {
       console.log('success delete ingredient');
+      callback();
     }, function (error) {
       console.error('error with deleting recipes');
     });
