@@ -3,10 +3,12 @@ var helper = require('../config/helpers.js');
 
 module.exports = {
   addIngredient: function (req, res, next) {
-    var ingredient = req.body.ingredient;
-    helper.findUser(req, res, next, function( found ){
-      found.ingredients.push(ingredient);
-    });
+    console.log('GET ITEM', Window.localStorage.getItem('com.foodZen'));
+
+    // var ingredient = req.body.ingredient;
+    // helper.findUser(req, res, next, function( found ){
+    //   found.ingredients.push(ingredient);
+    // });
   },
 
   getAllIngredients: function (user_id, callback) {

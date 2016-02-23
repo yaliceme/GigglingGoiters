@@ -20,8 +20,20 @@ angular.module('foodZen.auth-services', [])
       return resp.data.token;
     });
   };
+
+  var isAuth = function () {
+    return !!$window.localStorage.getItem('com.foodZen');
+  };
+
+  var signout = function () {
+    $window.localStorage.removeItem('com.foodZen');
+    $location.path('/signin');
+  };
+
   return {
     signin: signin,
-    signup: signup
+    signup: signup,
+    isAuth: isAuth,
+    signout: signout
   };
 }]);
