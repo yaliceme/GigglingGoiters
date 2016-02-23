@@ -1,5 +1,5 @@
 angular.module('foodZen.home', [])
-.controller('HomeController', function($scope, $http, $location, Ingredients){
+.controller('HomeController', function($scope, $http, $location, Ingredients, Recipes){
   $scope.ingredients = [];
 
   $scope.hitEnter = function($event) {

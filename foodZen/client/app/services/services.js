@@ -3,25 +3,37 @@ angular.module('foodZen.services', [])
 
 .factory('Recipes', [ '$http', function ($http){
 
-  var getRecipes = function(IngredientArray) {
+  var recipes = [];
+
+  var updateRecipes = function(IngredientArray) {
     return $http({
       method: 'GET',
       url: 'http://localhost:3000/api/recipes',
       data: IngredientArray
     }).then(function (res) {
-      console.log('got dem recipes ', res);
+      recipes = res.data;
+      console.log('got dem recipes ', recipes);
+      return res.data;
     }, function (error) {
       console.error('error with getting recipes');
     });
   };
 
+  var getRecipes = function (){
+    return recipes;
+  }
+
   return {
-    getRecipes: getRecipes
+    getRecipes: getRecipes,
+    updateRecipes: updateRecipes,
+    recipes: recipes
   };
 }])
 
 
 .factory('Ingredients', [ '$http', function ($http){
+
+  var ingredients = [];
 
   var postIngredient = function(ingredient) {
     return $http({
@@ -29,6 +41,7 @@ angular.module('foodZen.services', [])
       url: 'http://localhost:3000/api/ingredients',
       data: {ingredient: ingredient}
     }).then(function(res){
+      ingredients.push(ingredient);
       console.log('success with the ingredient post !');
     }, function(error){
       console.error('error with posting ingredient');
@@ -49,6 +62,7 @@ angular.module('foodZen.services', [])
 
   return {
     postIngredient: postIngredient,
-    deleteIngredient: deleteIngredient
+    deleteIngredient: deleteIngredient,
+    ingredients: ingredients 
   };
 }]);
