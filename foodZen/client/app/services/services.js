@@ -8,7 +8,7 @@ angular.module('foodZen.services', [])
   var updateRecipes = function(IngredientArray) {
     return $http({
       method: 'GET',
-      url: 'http://localhost:3000/api/recipes',
+      url: '/api/recipes',
       data: IngredientArray
     }).then(function (res) {
       recipes = res.data;
@@ -38,7 +38,7 @@ angular.module('foodZen.services', [])
   var postIngredient = function(ingredient) {
     return $http({
       method: 'POST',
-      url: 'http://localhost:3000/api/ingredients',
+      url: '/api/ingredients',
       data: {ingredient: ingredient}
     }).then(function(res){
       ingredients.push(ingredient);
@@ -48,10 +48,22 @@ angular.module('foodZen.services', [])
     });
   };
 
+  var getIngredients = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/ingredients',
+    }).then(function(res){
+      ingredients = res.data;
+      console.log('success with getting ingredients !');
+    }, function(error){
+      console.error('error with getting ingredients');
+    });
+  };
+
   var deleteIngredient = function(ingredient) {
     return $http({
       method: 'DELETE',
-      url: 'http://localhost:3000/api/ingredients',
+      url: '/api/ingredients',
       data: ingredient
     }).then(function (res) {
       console.log('success delete ingredient');

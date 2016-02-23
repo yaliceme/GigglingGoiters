@@ -20,6 +20,13 @@ angular.module('foodZen.home', [])
     $scope.ingredient = '';
   };
 
+  $scope.removeIngredient = function(ingredient) {
+    //need to get this functionally to work with the full database
+    console.log("removing ", ingredient);
+    Ingredients.deleteIngredient(ingredient);
+    $scope.data.ingredients.splice($scope.data.ingredients.indexOf(ingredient), 1);
+  }
+
   $scope.goRecipes = function() {
     $location.url('/recipes');
   };

@@ -5,6 +5,6 @@
 <button type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
 <button type="submit" ng-click="signout()">Sign Out</button>
 <ul>
-<li ng-repeat="item in data.ingredients">{{ item }}</li>
+<li ng-repeat="item in data.ingredients">{{ item }}<button ng-click="removeIngredient(item)">delete</button></li>
 </ul>
 
