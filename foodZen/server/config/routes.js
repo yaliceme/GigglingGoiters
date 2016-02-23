@@ -12,6 +12,7 @@ module.exports = function (app, express) {
   //Adjust Ingredients
   app.post('/api/ingredients/', helpers.decode, ingredientController.addIngredient);
   app.delete('/api/ingredients/', helpers.decode, ingredientController.removeIngredient);
+  app.get('/api/ingredients/', helpers.decode, ingredientController.sendIngredients);
 
   //Adjust users
   app.post('/api/users/', userController.addUser);
