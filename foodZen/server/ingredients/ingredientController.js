@@ -1,14 +1,17 @@
 var Ingredient = require('./ingredientModel.js');
-var helper = require('../config/helpers.js');
+var helpers = require('../config/helpers.js');
+
 
 module.exports = {
   addIngredient: function (req, res, next) {
-    console.log('GET ITEM', Window.localStorage.getItem('com.foodZen'));
-
-    // var ingredient = req.body.ingredient;
-    // helper.findUser(req, res, next, function( found ){
-    //   found.ingredients.push(ingredient);
-    // });
+   var ingredient = req.body.ingredient;
+   // helper.decode( req, res, next )
+   // .then(
+    console.log()
+    helpers.findUser(req, res, next, function( found ){
+      found.ingredients.push(ingredient);
+    });
+    // );
   },
 
   getAllIngredients: function (user_id, callback) {

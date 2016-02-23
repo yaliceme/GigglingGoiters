@@ -1,5 +1,5 @@
 angular.module('foodZen.auth-services', [])
-.factory('Auth', ['$http', function($http){
+.factory('Auth', function($http, $window, $location){
 
   var signin = function(user){
     return $http({
@@ -36,4 +36,4 @@ angular.module('foodZen.auth-services', [])
     isAuth: isAuth,
     signout: signout
   };
-}]);
+});

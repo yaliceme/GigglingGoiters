@@ -14,6 +14,10 @@ angular.module('foodZen', ['foodZen.home', 'foodZen.auth' ,'foodZen.services', '
     templateUrl: 'app/auth/signin.html',
     controller: 'AuthController'
   })
+   .when('/signin', {
+    templateUrl: 'app/auth/signin.html',
+    controller: 'AuthController'
+  })
   .when('/signup', {
     templateUrl: 'app/auth/signup.html',
     controller: 'AuthController'

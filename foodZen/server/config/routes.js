@@ -7,7 +7,7 @@ var helpers = require('./helpers.js');
 module.exports = function (app, express) {
 
   app.get('/api/recipes/', recipeController.getRecipes);
-  app.post('/api/ingredients/', ingredientController.addIngredient);
+  app.post('/api/ingredients/', helpers.decode, ingredientController.addIngredient);
   app.post('/api/users/', userController.addUser);
   app.delete('/api/ingredients/', ingredientController.removeIngredient);
   app.post('/api/users/signin/', userController.signin);
