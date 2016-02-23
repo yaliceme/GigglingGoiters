@@ -54,7 +54,6 @@ module.exports = {
         },
         qs: {ingredients: ingredients}
       };
-      console.log('+++++> OPTIONS, ', options);
       request.get(options, function (error, response, body) {
         if (error) {
           console.log("Error with getRecipes request:", error);

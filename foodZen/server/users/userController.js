@@ -1,6 +1,7 @@
 var User = require('./userModel.js');
 var jwt = require('jwt-simple');
 var Q = require('q');
+var helpers = require('../config/helpers.js');
 
 var findUser = Q.nbind(User.findOne, User);
 var createUser = Q.nbind(User.create, User);
@@ -37,7 +38,7 @@ module.exports = {
     User.findOne({ email: email })
       .exec(function(err, user) {
         if (!user) {
-          next(new Error('User does not exist'));
+          return helpers.errorHandler( {message: 'That email is not registered'}, req, res, next );
         } else {
           user.comparePasswords(password).then(function ( foundUser ) {
             if( foundUser ) {
