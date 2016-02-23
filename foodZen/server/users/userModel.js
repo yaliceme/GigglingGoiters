@@ -4,14 +4,6 @@ var bcrypt = require('bcrypt-nodejs');
 var SALT_WORK_FACTOR = 10;
 
 var userSchema = mongoose.Schema({
-<<<<<<< ecf173d6197b547df890c95839fc8a1953b1d47f
-  // user_id: {
-  //   type: mongoose.Schema.ObjectId,
-  //   default: mongoose.Types.ObjectId
-  // },
-  user_id: Number,
-  email: String
-=======
   email: {
     type: String,
     required: true,
@@ -44,7 +36,6 @@ userSchema.pre('save', function (next) {
   if (!user.isModified('password')) {
     return next();
   }
->>>>>>> Enable log in with jwt authentication
 
   // generate a salt
   bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
