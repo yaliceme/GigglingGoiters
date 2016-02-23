@@ -14,7 +14,6 @@ angular.module('foodZen.home', [])
 
   $scope.addIngredient = function() {
     console.log('ingredient', $scope.ingredient);
-    //$scope.data.ingredients.push($scope.ingredient);
     Ingredients.postIngredient($scope.ingredient);
     $scope.ingredient = '';
   };
