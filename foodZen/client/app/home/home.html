@@ -2,7 +2,8 @@
 
 <input ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
 <button type="submit" ng-click="addIngredient()">add ingredient</button>
-<button type="submit" ng-click="goRecipes()">Get Recipes</button>
+<button type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
+<button type="submit" ng-click="signout()">Sign Out</button>
 <ul>
 <li ng-repeat="item in data.ingredients">{{ item }}</li>
 </ul>

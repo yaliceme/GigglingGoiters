@@ -1,4 +1,4 @@
-angular.module('foodZen', ['foodZen.home', 'foodZen.auth' ,'foodZen.services', 'foodZen.auth-services', 'ngRoute'])
+angular.module('foodZen', ['foodZen.home', 'foodZen.auth' , 'foodZen.recipes', 'foodZen.services', 'foodZen.auth-services', 'ngRoute'])
 .config(function($routeProvider, $httpProvider){
   $routeProvider
   .when('/home', {
@@ -8,7 +8,8 @@ angular.module('foodZen', ['foodZen.home', 'foodZen.auth' ,'foodZen.services', '
   })
   .when('/recipes', {
     templateUrl: 'app/recipes/recipes.html',
-    controller: 'RecipeController'
+    controller: 'RecipeController',
+    authenticate: true
   })
   .when('/', {
     templateUrl: 'app/auth/signin.html',

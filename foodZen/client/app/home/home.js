@@ -1,10 +1,12 @@
 angular.module('foodZen.home', [])
-.controller('HomeController', function($scope, $http, $location, Ingredients, Recipes){
+.controller('HomeController', function($scope, $http, $location, Ingredients, Auth, Recipes){
   $scope.data = {};
 
   var initializeIngredients = function(){
       $scope.data.ingredients = Ingredients.ingredients;
   };
+
+  $scope.ingredients = [];
 
   $scope.hitEnter = function($event) {
     if($event.which === 13) {
@@ -20,7 +22,11 @@ angular.module('foodZen.home', [])
 
   $scope.goRecipes = function() {
     $location.url('/recipes');
-  }
-  console.log('home controller so running');
+  };
+
   initializeIngredients();
+
+  $scope.signout = function () {
+    Auth.signout();
+  };
 });

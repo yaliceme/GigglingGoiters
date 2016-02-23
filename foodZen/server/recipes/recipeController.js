@@ -25,7 +25,7 @@ var findByIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.
 
 
 module.exports = {
-  //Make temp functionality for non-logged in users
+  //Make temp functionality for non-logged in users?
   tempGetRecipes: function(req, res, next) {
     var options = {
       url: findByIngredients,
@@ -42,11 +42,9 @@ module.exports = {
       }
     });
   },
+
   getRecipes: function (req, res, next) {
-    //Need to grab user_id from the request...
-    //var user_id = req.session?
-    var user_id = 1;
-    var email = 'a@a.com';
+    var email = req.user.email;
     Ingredient.getAllIngredients( email, function( cart ){
       var ingredients = cart.ingredients.join();
       var options = {
