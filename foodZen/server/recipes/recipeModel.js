@@ -5,7 +5,7 @@ var recipeSchema = mongoose.Schema({
     title: String,
     image: String,
     imageType: String,
-    likes: 2
+    likes: Number
 });
 
 var Recipe = mongoose.model('Recipe', recipeSchema);
