@@ -76,6 +76,7 @@ angular.module('foodZen.services', [])
   return {
     postIngredient: postIngredient,
     deleteIngredient: deleteIngredient,
-    ingredients: ingredients 
+    ingredients: ingredients,
+    getIngredients: getIngredients
   };
 }]);
