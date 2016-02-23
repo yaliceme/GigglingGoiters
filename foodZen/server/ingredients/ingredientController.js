@@ -37,7 +37,8 @@ module.exports = {
   removeIngredient: function ( req, res, next ) {
     var ingredient = req.body.ingredient;
     helpers.findUser(req, res, next, function( found ){
-      found.splice(found.ingredients.indexOf(ingredient), 1);
+      console.log('FOUND +++++++++++++++++++++>>>>>>>', found);
+      found.ingredients.splice(found.ingredients.indexOf(ingredient), 1);
     });
 
   }
