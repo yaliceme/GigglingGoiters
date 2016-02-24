@@ -8,11 +8,11 @@
 
   </head>
   <body>
-    <div class="navigation">
+    <div class="navigation" ng-controller="AuthController">
       <a class="logo"href="/">FoodZEN</a>
       <a href="/#/ingredients">Ingredients</a>
       <a href="/#/recipes">Recipes</a>
-      <a class="logout" href="/logout">Logout</a>
+      <a class="signout" ng-click="signout()">Signout</a>
     </div>
 
     <div>
