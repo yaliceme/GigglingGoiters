@@ -12,8 +12,9 @@ angular.module('foodZen', ['foodZen.ingredients', 'foodZen.auth' , 'foodZen.reci
     authenticate: true
   })
   .when('/', {
-    templateUrl: 'app/auth/signin.html',
-    controller: 'AuthController'
+    templateUrl: 'app/ingredients/ingredients.html',
+    controller: 'IngredientController',
+    authenticate: true
   })
    .when('/signin', {
     templateUrl: 'app/auth/signin.html',
