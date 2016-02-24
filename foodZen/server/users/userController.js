@@ -45,7 +45,7 @@ module.exports = {
               var token = jwt.encode(user, 'secret');
               res.json({token: token});
             } else {
-              return next( new Error('No user'));
+              return next( new Error('Wrong password'));
             }
           });
         }
