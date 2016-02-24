@@ -1,5 +1,5 @@
 angular.module('foodZen.ingredients', [])
-.controller('IngredientController', function($scope, $http, $location, Ingredients, Auth, Recipes){
+.controller('IngredientController', function($scope, $http, $location, Ingredients, Auth, Recipes, Baskets){
 
   var initializeIngredients = function(){
       Ingredients.getIngredients()
@@ -8,14 +8,14 @@ angular.module('foodZen.ingredients', [])
       });
   };
 
-  $scope.hitEnter = function($event) {
+  $scope.hitEnter = function($event, ingredient) {
     if($event.which === 13) {
-      $scope.addIngredient();
+      $scope.addIngredient(ingredient);
     }
   };
 
-  $scope.addIngredient = function() {
-    Ingredients.postIngredient($scope.ingredient, function () {
+  $scope.addIngredient = function(ingredient) {
+    Ingredients.postIngredient(ingredient, function () {
       initializeIngredients();
     });
     $scope.ingredient = '';
@@ -30,8 +30,6 @@ angular.module('foodZen.ingredients', [])
   $scope.goRecipes = function() {
     $location.url('/recipes');
   };
-
-  initializeIngredients();
 
   $scope.signout = function () {
     //google sign out
@@ -50,4 +48,17 @@ angular.module('foodZen.ingredients', [])
     }
     return newArr;
   };
+
+  $scope.baskets = Baskets.baskets;
+
+  $scope.addBasket = function (basket) {
+    // console.log("You added the basket:", basket.name);
+    var contents = basket.contents;
+    // console.log("This basket contains:", contents);
+    for (var i = 0; i < contents.length; i++) {
+      $scope.addIngredient(contents[i]);
+    }
+  };
+
+  initializeIngredients();
 });

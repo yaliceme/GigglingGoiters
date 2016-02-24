@@ -78,4 +78,34 @@ angular.module('foodZen.services', [])
     ingredients: ingredients,
     getIngredients: getIngredients
   };
+}])
+
+
+.factory('Baskets', [ '$http', function ($http){
+
+  var baskets = {
+    basics: {
+      name: "Basics",
+      contents: [
+        "water",
+        "salt",
+        "pepper",
+        "oil",
+        "butter",
+        "flour",
+        "sugar"
+      ]
+    },
+    chineseStaples: {
+      name: "Chinese Staples",
+      contents: [
+        "soy sauce",
+        "white rice"
+      ]
+    }
+  };
+
+  return {
+    baskets: baskets
+  };
 }]);
