@@ -2,18 +2,17 @@
 
 <h2>Add the ingredients that you have!</h2>
 
-<div class="ingredient-submission">
-  <input ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
-  <button type="submit" ng-click="addIngredient()">Add Ingredient</button>
-  <button type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
- <!--  <ul>
-  	<li ng-repeat="item in data.ingredients track by $index">{{ item }}<button ng-click="removeIngredient(item)">delete</button></li>
-  </ul> -->
+<div class="ingredient-submission span4">
+  <input class="input-lg" ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
+  <button class="btn-lg btn-primary" type="submit" ng-click="addIngredient()">Add Ingredient</button>
+  <button class="btn-lg btn-primary" type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
   <table class="table">
     <tr ng-repeat="rows in chunkedData">
-       <td ng-repeat="item in rows" ng-click="removeIngredient(item)">{{ item }}</td> 
+       <td class="lead" ng-repeat="item in rows track by $index" ng-click="removeIngredient(item)"><img class="fruit" ng-src="../../assets/apple.jpg">{{ item }}</td>
      </tr>
    </table>
 </div>
 
+<a class="citation" href="http://www.freepik.com/free-photos-vectors/food">Food vector designed by Freepik</a>
+<a class="citation" href='http://www.freepik.com/free-vector/fruit-icons-in-flat-design_821725.htm'>Designed by Freepik</a>
 

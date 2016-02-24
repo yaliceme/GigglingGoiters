@@ -1,13 +1,10 @@
 angular.module('foodZen.ingredients', [])
 .controller('IngredientController', function($scope, $http, $location, Ingredients, Auth, Recipes){
-  $scope.data = {};
 
   var initializeIngredients = function(){
       Ingredients.getIngredients()
       .then(function (ingredients) {
-        $scope.data.ingredients = ingredients;
         $scope.chunkedData = chunk(ingredients, 3);
-        console.log("ingredients from controller", ingredients);
       });
   };
 
@@ -18,7 +15,6 @@ angular.module('foodZen.ingredients', [])
   };
 
   $scope.addIngredient = function() {
-    console.log('ingredient', $scope.ingredient);
     Ingredients.postIngredient($scope.ingredient, function () {
       initializeIngredients();
     });
@@ -26,8 +22,6 @@ angular.module('foodZen.ingredients', [])
   };
 
   $scope.removeIngredient = function(ingredient) {
-    //need to get this functionally to work with the full database
-    console.log("removing this thing: ", ingredient);
     Ingredients.deleteIngredient(ingredient, function () {
       initializeIngredients();
     });
