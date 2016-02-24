@@ -28,7 +28,6 @@ angular.module('foodZen.auth-services', [])
   var signout = function () {
     $window.localStorage.removeItem('com.foodZen');
     $location.path('/signin');
-    console.log("HERE")
   };
 
   return {
