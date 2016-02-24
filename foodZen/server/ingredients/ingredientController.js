@@ -25,7 +25,7 @@ module.exports = {
     var email = req.user.email;
     module.exports.getAllIngredients( email, function( cart ) {
       if( !cart ) {
-        res.end('You haven\'t added any ingredients to your cart yet!');
+        res.end('');
       } else {
         res.json(cart.ingredients);
       }
