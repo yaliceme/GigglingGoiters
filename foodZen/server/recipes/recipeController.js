@@ -63,5 +63,9 @@ module.exports = {
         }
       });
     });
+  },
+
+  getSavedRecipes: function( req, res, next ) {
+    
   }
 };

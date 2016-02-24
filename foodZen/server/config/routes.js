@@ -8,6 +8,7 @@ module.exports = function (app, express) {
 
   //Get Recipes
   app.get('/api/recipes/', helpers.decode, recipeController.getRecipes);
+  app.get('/api/users/recipes/', helpers.decode, recipeController.getSavedRecipes);
 
   //Adjust Ingredients
   app.post('/api/ingredients/', helpers.decode, ingredientController.addIngredient);
@@ -15,7 +16,7 @@ module.exports = function (app, express) {
   app.get('/api/ingredients/', helpers.decode, ingredientController.sendIngredients);
 
   //Adjust users
-  app.post('/api/users/', userController.addUser);
+  //app.post('/api/users/', userController.addUser);
   app.post('/api/users/signin/', userController.signin);
   app.post('/api/users/signup/', userController.signup);
 

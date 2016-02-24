@@ -61,12 +61,9 @@ angular.module('foodZen.services', [])
     });
   };
 
-  var deleteIngredient = function(ingredient, callback) {
-    return $http({
-      method: 'DELETE',
-      url: '/api/ingredients',
-      data: ingredient
-    }).then(function (res) {
+    var deleteIngredient = function(ingredient, callback) {
+    return $http.delete('/api/ingredients', {params: {ingredient: ingredient}})
+    .then(function (res) {
       console.log('success delete ingredient');
       callback();
     }, function (error) {
