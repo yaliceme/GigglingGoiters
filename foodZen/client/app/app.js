@@ -1,9 +1,9 @@
-angular.module('foodZen', ['foodZen.home', 'foodZen.auth' , 'foodZen.recipes', 'foodZen.services', 'foodZen.auth-services', 'ngRoute'])
+angular.module('foodZen', ['foodZen.ingredients', 'foodZen.auth' , 'foodZen.recipes', 'foodZen.services', 'foodZen.auth-services', 'ngRoute'])
 .config(function($routeProvider, $httpProvider){
   $routeProvider
-  .when('/home', {
-    templateUrl: 'app/home/home.html',
-    controller: 'HomeController',
+  .when('/ingredients', {
+    templateUrl: 'app/ingredients/ingredients.html',
+    controller: 'IngredientController',
     authenticate: true
   })
   .when('/recipes', {
@@ -24,7 +24,7 @@ angular.module('foodZen', ['foodZen.home', 'foodZen.auth' , 'foodZen.recipes', '
     controller: 'AuthController'
   })
   .otherwise({
-    redirectTo: '/home'
+    redirectTo: '/ingredients'
   });
 
     $httpProvider.interceptors.push('AttachTokens');
