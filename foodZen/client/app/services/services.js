@@ -23,10 +23,23 @@ angular.module('foodZen.services', [])
     return recipes;
   };
 
+  // GET user's saved recipes from database
+  var getUserRecipes = function() {
+    
+  };
+
+  // POST recipe to user's saved recipes
+  var postUserRecipe = function(recipe) {
+
+  };
+
+
   return {
     getRecipes: getRecipes,
     updateRecipes: updateRecipes,
-    recipes: recipes
+    recipes: recipes,
+    getUserRecipes: getUserRecipes,
+    postUserRecipe: postUserRecipe
   };
 }])
 
