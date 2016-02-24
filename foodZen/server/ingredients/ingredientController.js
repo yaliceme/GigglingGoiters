@@ -8,7 +8,6 @@ module.exports = {
     helpers.findUser(req, res, next, function( found ){
       found.ingredients.push(ingredient);
     });
-    // );
   },
 
   getAllIngredients: function ( email, callback) {
@@ -28,16 +27,14 @@ module.exports = {
       if( !cart ) {
         res.end('You haven\'t added any ingredients to your cart yet!');
       } else {
-        console.log('==========================>>>>>THE CART: ', cart);
         res.json(cart.ingredients);
       }
     });
   },
   
   removeIngredient: function ( req, res, next ) {
-    var ingredient = req.body.ingredient;
+    var ingredient = req.query.ingredient;
     helpers.findUser(req, res, next, function( found ){
-      console.log('FOUND +++++++++++++++++++++>>>>>>>', found);
       found.ingredients.splice(found.ingredients.indexOf(ingredient), 1);
     });
 

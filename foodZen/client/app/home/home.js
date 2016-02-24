@@ -24,7 +24,7 @@ angular.module('foodZen.home', [])
 
   $scope.removeIngredient = function(ingredient) {
     //need to get this functionally to work with the full database
-    console.log("removing ", ingredient);
+    console.log("removing this thing: ", ingredient);
     Ingredients.deleteIngredient(ingredient, function () {
       initializeIngredients();
     });
