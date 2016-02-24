@@ -6,16 +6,18 @@ var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
 
-  //Get Recipes
+  //Interact with Recipes
   app.get('/api/recipes/', helpers.decode, recipeController.getRecipes);
   app.get('/api/users/recipes/', helpers.decode, recipeController.getSavedRecipes);
+  //the route below should save a recipe to User_Recipe AND to Recipes
+  app.post('/api/users/recipes/', helpers.decode, recipeController.saveRecipe);
 
-  //Adjust Ingredients
+  //Interact with Ingredients
   app.post('/api/ingredients/', helpers.decode, ingredientController.addIngredient);
   app.delete('/api/ingredients/', helpers.decode, ingredientController.removeIngredient);
   app.get('/api/ingredients/', helpers.decode, ingredientController.sendIngredients);
 
-  //Adjust users
+  //Interact with Users
   //app.post('/api/users/', userController.addUser);
   app.post('/api/users/signin/', userController.signin);
   app.post('/api/users/signup/', userController.signup);

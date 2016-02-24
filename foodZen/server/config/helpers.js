@@ -1,5 +1,6 @@
 var jwt = require('jwt-simple');
 var Ingredient = require('../ingredients/ingredientModel.js');
+var User_Recipe = require('../user_recipe/user_recipeModel.js');
 
 module.exports = {
   errorLogger: function (error, req, res, next) {
@@ -46,6 +47,29 @@ module.exports = {
             res.send(200, found);
           }
         });
+      } else {
+        var newIngredient =  new Ingredient({
+          email: email,
+          ingredients: [ingredient]
+        });
+        newIngredient.save(function(err, newUser){
+          if( err ) {
+            res.send( 500, err );
+          } else {
+            console.log('new user created in Ingredients db', newUser);
+            res.send(200, newUser);
+          }
+        });
+      }
+    });
+  },
+
+  findUser_Recipes: function ( req, res, next, callback ){
+    var email = req.user.email;
+    User_Recipe.findOne({email: email}).exec(function( err, found) {
+      if( found ) {
+        callback ( found );
+        
       } else {
         var newIngredient =  new Ingredient({
           email: email,
