@@ -105,3 +105,7 @@ img.fruit {
 table {
   margin: 20px;
 }
+
+td:hover {
+  background-color: #C8936B;
+}
