@@ -4,11 +4,16 @@
 
 <div class="ingredient-submission">
   <input ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
-  <button type="submit" ng-click="addIngredient()">add ingredient</button>
+  <button type="submit" ng-click="addIngredient()">Add Ingredient</button>
   <button type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
-  <ul>
+ <!--  <ul>
   	<li ng-repeat="item in data.ingredients track by $index">{{ item }}<button ng-click="removeIngredient(item)">delete</button></li>
-  </ul>
+  </ul> -->
+  <table class="table">
+    <tr ng-repeat="rows in chunkedData">
+       <td ng-repeat="item in rows" ng-click="removeIngredient(item)">{{ item }}</td> 
+     </tr>
+   </table>
 </div>
 
 

@@ -6,19 +6,22 @@ angular.module('foodZen.ingredients', [])
       Ingredients.getIngredients()
       .then(function (ingredients) {
         $scope.data.ingredients = ingredients;
+        $scope.chunkedData = chunk(ingredients, 3);
         console.log("ingredients from controller", ingredients);
       });
   };
 
   $scope.hitEnter = function($event) {
     if($event.which === 13) {
-      console.log('enter button!');
+      $scope.addIngredient();
     }
   };
 
   $scope.addIngredient = function() {
     console.log('ingredient', $scope.ingredient);
-    Ingredients.postIngredient($scope.ingredient);
+    Ingredients.postIngredient($scope.ingredient, function () {
+      initializeIngredients();
+    });
     $scope.ingredient = '';
   };
 
@@ -44,5 +47,13 @@ angular.module('foodZen.ingredients', [])
     });
     //foodZen sign out
     Auth.signout();
+  };
+
+  var chunk = function (arr, size) {
+    var newArr = [];
+    for (var i=0; i<arr.length; i+=size) {
+      newArr.push(arr.slice(i, i+size));
+    }
+    return newArr;
   };
 });

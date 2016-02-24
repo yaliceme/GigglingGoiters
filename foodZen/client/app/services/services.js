@@ -35,7 +35,7 @@ angular.module('foodZen.services', [])
 
   var ingredients = [];
 
-  var postIngredient = function(ingredient) {
+  var postIngredient = function(ingredient, callback) {
     return $http({
       method: 'POST',
       url: '/api/ingredients',
@@ -43,6 +43,7 @@ angular.module('foodZen.services', [])
     }).then(function(res){
       ingredients.push(ingredient);
       console.log('success with the ingredient post !');
+      callback();
     }, function(error){
       console.error('error with posting ingredient');
     });
