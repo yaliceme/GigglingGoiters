@@ -1,0 +1,17 @@
+<h2>Make a grocery list based on your recipes!</h2>
+
+<div class="recipe-glist">
+  <ul>
+    <li ng-repeat="recipe in data.recipes">
+    <input type="checkbox">{{ recipe }}</li>
+  </ul>
+</div>
+<div class="glist">
+  <div class="grocerylist-submission">
+    <input ng-model="newGrocery" placeholder="add items to grocery list here">
+    <button type="submit" ng-click="addGrocery()">add</button>
+  </div>
+  <ul>
+    <li ng-repeat="grocery in data.groceries">{{ grocery }}<button ng-click="deleteGrocery(grocery)">delete</button></li>
+  </ul>
+</div>
