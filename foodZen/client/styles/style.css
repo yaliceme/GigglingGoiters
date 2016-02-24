@@ -94,3 +94,18 @@ h2 {
 .signup {
   text-align: center;
 }
+
+img.fruit {
+  padding: 10px;
+}
+
+.citation {
+  font-size: 8px;
+}
+table {
+  margin: 20px;
+}
+
+td:hover {
+  background-color: #C8936B;
+}
