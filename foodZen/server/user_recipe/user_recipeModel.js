@@ -1,9 +1,11 @@
-  
+var mongoose = require('mongoose');
 
+var user_recipeSchema = mongoose.Schema({
+  user_email: String,
+  recipe_id: Number,
+  user_rating: Number
+});
 
-// user_id
-// recipe_id
-// user_rating
-//last_cooked/cooked/etc.?
-//   usedIngredientCount: 3,
-//     missedIngredientCount: -1,
+var User_Recipe = mongoose.model('User_Recipe', user_recipeSchema);
+
+module.exports = User_Recipe;
