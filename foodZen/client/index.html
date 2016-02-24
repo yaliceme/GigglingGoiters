@@ -8,14 +8,22 @@
 
   </head>
   <body>
-    <h1>FoodZEN - The meal planning solution</h1>
     <div class="navigation">
-      <ul>
-        <li><a href='/#/home'>Ingredients</a></li>
-        <li><a href='/#/recipes'>Recipes</a></li>
-      </ul>
+      <a class="logo"href="/">FoodZEN</a>
+      <a href="/#/home">Ingredients</a>
+      <a href="/#/recipes">Recipes</a>
+      <a class="logout" href="/logout">Logout</a>
     </div>
+
+    <div>
+      <div class="header-image">
+        <img src="styles/food-kitchen-cutting-board-cooking.jpg" alt="" />
+      </div>
+    </div>
+
     <div ng-view></div>
+
+    <link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,900,400italic' rel='stylesheet' type='text/css'>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="lib/jquery/dist/jquery.min.js"></script>
     <script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>

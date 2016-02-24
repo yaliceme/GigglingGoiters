@@ -1,10 +1,14 @@
+<h1>Ingredients</h1>
+
 <h2>Add the ingredients that you have!</h2>
 
-<input ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
-<button type="submit" ng-click="addIngredient()">add ingredient</button>
-<button type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
-<button type="submit" ng-click="signout()">Sign Out</button>
-<ul>
-<li ng-repeat="item in data.ingredients track by $index">{{ item }}<button ng-click="removeIngredient(item)">delete</button></li>
-</ul>
+<div class="ingredient-submission">
+  <input ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event)">
+  <button type="submit" ng-click="addIngredient()">add ingredient</button>
+  <button type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
+  <button type="submit" ng-click="signout()">Sign Out</button>
+  <ul>
+  <li ng-repeat="item in data.ingredients track by $index">{{ item }}<button ng-click="removeIngredient(item)">delete</button></li>
+  </ul>
+</div>
 

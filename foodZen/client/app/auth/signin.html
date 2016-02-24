@@ -9,12 +9,13 @@
 
 <h2>Sign in below to get personalized recipes</h2>
 
-<div id='signin'>
+<div class='signin'>
   <form name="signinForm" ng-submit='signin()'>
     <input type='email' placeholder="email" ng-model='user.email'>
     <input type="password" placeholder="password" ng-model='user.password'>
     <button>signin</button>
   </form>
+    <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
 </div>
 
 <h2>Or sign in with Gmail</h2>
@@ -35,7 +36,6 @@
       }
     </script>
   <div>
-    <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
   </div>
   </body>
 </html>

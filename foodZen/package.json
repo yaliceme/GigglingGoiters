@@ -27,6 +27,7 @@
     "request": "^2.36.0"
   },
   "scripts": {
-    "test": "mocha server/tests/ingredientModelTest.js server/tests/recipeModelTest.js server/tests/userModelTest.js"
+    "test": "mocha server/tests/ingredientModelTest.js server/tests/recipeModelTest.js server/tests/userModelTest.js",
+    "start": "nodemon server/server.js"
   }
 }
