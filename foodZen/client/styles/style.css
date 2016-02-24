@@ -43,9 +43,16 @@ body {
   color: grey;
 } 
 
+.header-image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
 .header-image img{
   width: 100%;
   z-index: 1;
+
 }
 
 h1 {
@@ -58,4 +65,28 @@ h1 {
   text-align: center;
   font-weight: bold;
   line-height: 150%;
+}
+
+h2 {
+  text-align: center;
+}
+
+.ingredient-submission {
+  text-align: center;
+}
+
+.ingredient-submission ul {
+  list-style: none;
+}
+
+.recipe-results {
+  text-align: center;
+}
+
+.recipe-results ul {
+  list-style: none;
+}
+
+.signin .g-signin2 .signup {
+  text-align: center;
 }
