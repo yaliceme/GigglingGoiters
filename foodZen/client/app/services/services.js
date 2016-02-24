@@ -25,12 +25,28 @@ angular.module('foodZen.services', [])
 
   // GET user's saved recipes from database
   var getUserRecipes = function() {
-    
+    return $http({
+      method: 'GET',
+      url: 'api/users/recipes/'
+    }).then(function (res) {
+      console.log('success with getting user recipes');
+      return res.data;
+    }).catch(err) {
+      console.error('error with getting user recipes');
+    }
   };
 
   // POST recipe to user's saved recipes
   var postUserRecipe = function(recipe) {
-
+    return $http({
+      method: 'POST',
+      url: '/api/users/recipes/',
+      data: {recipe: recipe}
+    }).then(function (res) {
+      console.log('success with user recipe post');
+    }).catch(err) {
+      console.error('error with posting user recipe');
+    }
   };
 
 
