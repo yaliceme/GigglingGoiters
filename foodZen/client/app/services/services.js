@@ -27,7 +27,7 @@ angular.module('foodZen.services', [])
   var getUserRecipes = function() {
     return $http({
       method: 'GET',
-      url: 'api/users/recipes/'
+      url: 'api/users/recipes'
     }).then(function (res) {
       console.log('success with getting user recipes');
       return res.data;
@@ -40,11 +40,11 @@ angular.module('foodZen.services', [])
   var postUserRecipe = function(recipe) {
     return $http({
       method: 'POST',
-      url: '/api/users/recipes/',
+      url: '/api/users/recipes',
       data: {recipe: recipe}
     }).then(function (res) {
       console.log('success with user recipe post');
-    }, function() {
+    }, function(error) {
       console.error('error with posting user recipe');
     });
   };

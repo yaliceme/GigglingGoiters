@@ -8,9 +8,8 @@ angular.module('foodZen.recipes', [])
     Recipes.updateRecipes(Ingredients.ingredients)
     .then(function (recipes) {
       $scope.data.recipes = recipes;
-      console.log($scope.data.recipes);
     });
-    // getting user's saved recipes
+
     Recipes.getUserRecipes()
     .then(function (savedRecipes) {
       $scope.data.savedRecipes = savedRecipes;
@@ -28,10 +27,12 @@ angular.module('foodZen.recipes', [])
   };
 
   // function for recipes view to POST a recipe to user's saved recipes
-  $scope.postUserRecipe = function(recipe) {
+  $scope.saveUserRecipe = function(recipe) {
     Recipes.postUserRecipe(recipe)
     .then(function () {
       console.log('success saving user recipe: ', recipe);
+    }, function(err) {
+      console.log('error saving user recipe');
     });
   };
 
@@ -48,4 +49,5 @@ angular.module('foodZen.recipes', [])
     });
   };
   initializeRecipes();
+  // getUserRecipes();
 });
