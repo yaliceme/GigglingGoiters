@@ -59,11 +59,6 @@ module.exports = {
     // find recipes specific to the user
     findRecipe({email: email})
     .then(function( found ){
-      // iterate through found here? It will probably be an array of all fields 
-      // that include that user email, since a user can have many saved recipes
-      console.log('getSavedRecipes returns this =================>>>>>>>>>>>', found);
-        //collect all recipe_id fields
-      //search recipes collection and return all recipes with matching id's
       res.send(200, found);
     })
     .fail(function (err) {
@@ -71,6 +66,7 @@ module.exports = {
     })
   },
 
+  // save recipe allows for duplicates
   saveRecipe: function( req, res, next ) {
     var recipe = req.body.recipe;
     var email = req.user.email;
@@ -80,8 +76,6 @@ module.exports = {
       id: recipe.id,
       email: email
     };
-    console.log('e: ', entry);
-    //Save recipe to Recipe
     createRecipe(entry)
     .then(function ( recipe ) {
       res.send(200, recipe);
