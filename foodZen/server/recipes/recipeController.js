@@ -5,6 +5,7 @@ var env = require('../env/env.js');
 var api_key = env.api_key;
 var request = require('request');
 var findByIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByIngredients';
+var findRecipeDetails = 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/';
 var Q = require('q');
 
 var findUser_Recipe = Q.nbind(User_Recipe.find, User_Recipe);
@@ -77,6 +78,25 @@ module.exports = {
       .fail(function ( err ){
         res.send(500, err);
       });
+    });
+  },
+
+  getRecipeDetails: function( req, res, next ) {
+    var id = req.body.id;
+    console.log('req id================>>>', id);
+    var options = {
+      url: findRecipeDetails + id + '/information',
+      headers: {
+        'X-Mashape-Key': api_key
+      }
+    };
+    request.get(options, function (error, response, body) {
+      if (error) {
+        console.log("Error with getRecipeDetails request:", error);
+      } else {
+        console.log('Detailed recipe request==========>>>>>: ', body);
+        res.end(body);
+      }
     });
   }
 
