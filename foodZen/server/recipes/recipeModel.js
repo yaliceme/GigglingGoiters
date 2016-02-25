@@ -3,9 +3,7 @@ var mongoose = require('mongoose');
 var recipeSchema = mongoose.Schema({
     id: Number,
     title: String,
-    image: String,
-    imageType: String,
-    likes: Number
+    email: String
 });
 
 var Recipe = mongoose.model('Recipe', recipeSchema);
