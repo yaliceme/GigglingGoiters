@@ -70,6 +70,7 @@ module.exports = {
   saveRecipe: function( req, res, next ) {
     var recipe = req.body.recipe;
     var email = req.user.email;
+    
     // create recipe entry to save
     var entry = {
       title: recipe.title,
@@ -83,6 +84,28 @@ module.exports = {
     .fail(function ( err ){
       res.send(500, err);
     });
+  
+    
+    // uncomment if you want errors up the bum
+    // findRecipe({id: recipe.id})
+    // .then(function (found) {
+    //   if (found) {
+    //     next(new Error('Recipe already saved'));
+    //   } else {
+    //     return createRecipe({
+    //       id: recipe.id,
+    //       title: recipe.title,
+    //       email: email
+    //     });
+    //   }
+    // })
+    // .then(function (recipe) {
+    //   send(200, recipe);
+    // })
+    // .fail(function (error) {
+    //   next(error);
+    // });
+
   },
 
   getRecipeDetails: function( req, res, next ) {
