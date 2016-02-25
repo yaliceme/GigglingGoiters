@@ -10,6 +10,29 @@ angular.module('foodZen.recipes', [])
       $scope.data.recipes = recipes;
       console.log($scope.data.recipes);
     });
+    // getting user's saved recipes
+    Recipes.getUserRecipes()
+    .then(function (savedRecipes) {
+      $scope.data.savedRecipes = savedRecipes;
+      console.log('saved recipes: ', $scope.data.savedRecipes);
+    });
+  };
+
+  // function for recipes view to GET user's saved recipes
+  $scope.getUserRecipes = function() {
+    Recipes.getUserRecipes()
+    .then(function (savedRecipes) {
+      $scope.data.savedRecipes = savedRecipes;
+      console.log('saved recipes: ', $scope.data.savedRecipes);
+    });
+  };
+
+  // function for recipes view to POST a recipe to user's saved recipes
+  $scope.postUserRecipe = function(recipe) {
+    Recipes.postUserRecipe(recipe)
+    .then(function () {
+      console.log('success saving user recipe: ', recipe);
+    });
   };
 
   $scope.viewRecipe = function(id){

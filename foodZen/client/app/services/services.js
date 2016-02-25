@@ -31,9 +31,9 @@ angular.module('foodZen.services', [])
     }).then(function (res) {
       console.log('success with getting user recipes');
       return res.data;
-    }).catch(err) {
+    }, function() {
       console.error('error with getting user recipes');
-    }
+    });
   };
 
   // POST recipe to user's saved recipes
@@ -44,11 +44,10 @@ angular.module('foodZen.services', [])
       data: {recipe: recipe}
     }).then(function (res) {
       console.log('success with user recipe post');
-    }).catch(err) {
+    }, function() {
       console.error('error with posting user recipe');
-    }
+    });
   };
-
 
   return {
     getRecipes: getRecipes,
