@@ -19,9 +19,9 @@
 <div class="baskets">
   <h3>Got a lot of ingredients in your kitchen? Save time by bulk-adding some of these common staples.</h3>
   <div ng-repeat="basket in baskets track by $index">
-    {{ basket.name }}<button ng-click="addBasket(basket)">Add these ingredients</button>
+    {{ basket.name }}<button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
     <ul>
-      <li ng-repeat="ingredient in basket.contents track by $index">{{ingredient}}</li>
+      <li ng-repeat="item in basket.contents track by $index">{{item}}<button ng-click="addIngredient(item)">Add</button></li>
     </ul>
   </div>
 </div>

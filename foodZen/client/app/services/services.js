@@ -97,10 +97,27 @@ angular.module('foodZen.services', [])
       ]
     },
     chineseStaples: {
-      name: "Chinese Staples",
+      name: "Chinese staples",
       contents: [
         "soy sauce",
-        "white rice"
+        "sesame oil",
+        "black vinegar",
+        "chili sauce",
+        "white rice",
+        "noodles",
+        "ginger",
+        "scallion"
+      ]
+    },
+    italianStaples: {
+      name: "Italian staples",
+      contents: [
+        "extra virgin olive oil",
+        "balsamic vinegar",
+        "mozzarella",
+        "tomatoes",
+        "pasta",
+        "garlic"
       ]
     }
   };
