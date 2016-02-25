@@ -2,9 +2,23 @@
 
 <h2>Here's Some Fucking Recipes You Can Make With Your Shit</h2>
 
-<div class="recipe-results">
-	<ul>
+<!-- <div class="recipe-results"> -->
+	<!-- <ul>
 	  <li ng-repeat="recipe in data.recipes">{{ recipe.title }}</li>
-	</ul>
-</div>
-
+	</ul> -->
+  <table class="table">
+    <td ng-repeat="recipe in data.recipes">
+      <div><img class="recipe" ng-src="{{ recipe.image }}"></div>
+      <div class="lead">{{ recipe.title }}</div>
+      <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
+    </td>
+  </table>
+<!--   <table class="table">
+    <td ng-repeat="recipe in data.recipes">
+      <img class="recipe" ng-src="{{ recipe.image }}">
+      {{ recipe.title }}
+     {{recipe.missedIngredientCount}} missing ingredients.
+    </td>
+  </table> -->
+<!-- </div>
+ -->
