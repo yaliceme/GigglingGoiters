@@ -5,6 +5,12 @@
 <div ng-show="singleRecipe.view">
   <div class="recipe-table">
     <h2>{{singleRecipe.recipe.data.title}}</h2>
+    <div class="hover-btn">
+       <button type="button" class="close" ng-click="saveUserRecipe(singleRecipe.recipe.data)">
+          <span aria-hidden="true">Save Recipe</span>
+          <span class="sr-only">Close</span>
+       </button>
+    </div>
     <img class="recipe" ng-src="{{singleRecipe.recipe.data.image}}">
   </div>
   <table> 
@@ -37,6 +43,12 @@
       <div><img class="recipe" ng-click="viewRecipe(recipe.id)" ng-src="{{ recipe.image }}"></div>
       <div class="lead">{{ recipe.title }}</div>
       <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
+      <div class="hover-btn">
+         <button type="button" class="close" ng-click="saveUserRecipe(recipe)">
+            <span aria-hidden="true">Save Recipe</span>
+            <span class="sr-only">Close</span>
+         </button>
+      </div>
     </td>
   </table>
 
