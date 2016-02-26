@@ -2,7 +2,7 @@
 
 <h2>Here's Some Fucking Recipes You Can Make With Your Shit</h2>
 
-  <div ng-show="singleRecipe.view">A Recipe: {{ singleView.recipe }}</div>
+  <div ng-show="singleRecipe.view">A Recipe: {{ singleRecipe.recipe }}</div>
   <table class="table">
     <td ng-repeat="recipe in data.recipes">
       <div><img class="recipe" ng-click="viewRecipe(recipe.id)" ng-src="{{ recipe.image }}"></div>

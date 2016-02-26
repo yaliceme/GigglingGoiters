@@ -39,7 +39,7 @@ angular.module('foodZen.recipes', [])
   $scope.viewRecipe = function(id){
     console.log('IDIDIDID', id);
     return $http({
-      method: 'GET',
+      method: 'POST',
       url: '/api/recipes/ingredients/',
       data: {id: id}
     }).then(function( recipe ){
