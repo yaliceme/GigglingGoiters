@@ -36,6 +36,39 @@ angular.module('foodZen.recipes', [])
     });
   };
 
+  var adjustRecipe = function(recipe) {
+    var openTag = 0;
+    var closeTag = 0;
+    var instructions = recipe.data.instructions.split('');
+    var closed = true;
+    var formattedInstructions = instructions.map(function(char){
+      if (char === '<') {
+        closed = false;
+      } else if(char === '>') {
+        closed = true;
+        return '*';
+      } else if(closed === true) {
+        return char;
+      }
+    }).join('').split('*').filter(function(step) {
+      return step !== '';
+    });
+    console.log('split*', instructions.map(function(char){
+      if (char === '<') {
+        closed = false;
+      } else if(char === '>') {
+        closed = true;
+        return '*';
+      } else if(closed === true) {
+        return char;
+      }
+    }).join('').split('*').filter(function(step) {
+      return step !== '';
+    }));
+    recipe.data.instructions = formattedInstructions;
+    $scope.singleRecipe.recipe = recipe;
+  };
+
   $scope.viewRecipe = function(id){
     console.log('IDIDIDID', id);
     return $http({
@@ -45,7 +78,7 @@ angular.module('foodZen.recipes', [])
     }).then(function( recipe ){
       console.log('DID WE GET THE RECIPE BACK?', recipe);
       $scope.singleRecipe.view = true;
-      $scope.singleRecipe.recipe = recipe;
+      adjustRecipe(recipe);
     });
   };
   initializeRecipes();
