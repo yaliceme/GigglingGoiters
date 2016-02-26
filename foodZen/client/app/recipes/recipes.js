@@ -21,8 +21,8 @@ angular.module('foodZen.recipes', [])
   $scope.getUserRecipes = function() {
     Recipes.getUserRecipes()
     .then(function (savedRecipes) {
-      $scope.data.savedRecipes = savedRecipes;
-      console.log('saved recipes: ', $scope.data.savedRecipes);
+      $scope.data.recipes = savedRecipes;
+      console.log('saved recipes: ', $scope.data.recipes);
     });
   };
 
