@@ -63,7 +63,7 @@ module.exports = {
     })
     .fail(function (err) {
       res.send(500, err);
-    })
+    });
   },
 
   // save recipe allows for duplicates
