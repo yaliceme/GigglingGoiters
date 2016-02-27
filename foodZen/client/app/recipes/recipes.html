@@ -6,24 +6,30 @@
   <div class="recipe-table">
     <h2>{{singleRecipe.recipe.data.title}}</h2>
     <img class="recipe" ng-src="{{singleRecipe.recipe.data.image}}">
+    <div class="hover-btn col-md-12">
+       <button type="button" class="close center" ng-click="saveUserRecipe(singleRecipe.recipe.data)">
+          <span aria-hidden="true">Save Recipe</span>
+          <span class="sr-only">Close</span>
+       </button>
+    </div>
   </div>
   <table> 
     <tr>
-      <td class="col-md-6">
-        <div class="h3 recipe-table">
+      <td class="col-md-6 recipe-table">
+        <h3 class="recipe-table">
         Ingredients
-        </div>
+        </h3>
         <ul>
-          <li ng-repeat="item in singleRecipe.recipe.data.extendedIngredients"> {{ item.originalString }}
+          <li class="recipe-table" ng-repeat="item in singleRecipe.recipe.data.extendedIngredients"> {{ item.originalString }}
           </li >
         </ul>
       </td>
-      <td class="col-md-6">
-        <div class="h3 recipe-table">
+      <td class="col-md-6 recipe-table">
+        <h3 class="recipe-table">
         Instructions
-        </div>
+        </h3>
         <ol>
-          <li ng-repeat="step in singleRecipe.recipe.data.instructions track by $index">
+          <li class="recipe-table" ng-repeat="step in singleRecipe.recipe.data.instructions track by $index">
             {{ step }}
           </li>
         </ol>
@@ -37,6 +43,16 @@
       <div><img class="recipe" ng-click="viewRecipe(recipe.id)" ng-src="{{ recipe.image }}"></div>
       <div class="lead">{{ recipe.title }}</div>
       <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
+      <div class="hover-btn">
+         <button type="button" class="close saveRecipe" ng-click="saveUserRecipe(recipe)">
+            <span aria-hidden="true">Save Recipe</span>
+            <span class="sr-only">Close</span>
+         </button>
+      </div>
     </td>
   </table>
+
+  <div>
+    <button class="btn-lg btn-primary col-md-3 col-md-offset-4" ng-click="getUserRecipes()">See your saved recipes</button>
+  </div>
 

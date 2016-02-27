@@ -142,3 +142,17 @@ td:hover {
 .recipe-table {
   text-align: center;
 }
+li.recipe-table {
+  text-align: left;
+}
+td.col-md-6.recipe-table {
+  vertical-align: top;
+}
+
+button.close.saveRecipe {
+  float: none;
+}
+button.close.center {
+float: none; 
+}
+

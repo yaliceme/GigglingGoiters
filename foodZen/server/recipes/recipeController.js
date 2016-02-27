@@ -108,9 +108,8 @@ module.exports = {
 
   },
 
-  getRecipeDetails: function( req, res, next ) {
+  getRecipeDetails: function( req, res, next, callback) {
     var id = req.body.id;
-    console.log('req id================>>>', id);
     var options = {
       url: findRecipeDetails + id + '/information',
       headers: {
@@ -120,9 +119,15 @@ module.exports = {
     request.get(options, function (error, response, body) {
       if (error) {
         console.log("Error with getRecipeDetails request:", error);
+        if( callback ) {
+          callback( error );
+        }
       } else {
-        console.log('Detailed recipe request==========>>>>>: ', body);
+        if( callback ){
+          callback( body );
+        } else {
         res.end(body);
+        }
       }
     });
   }
