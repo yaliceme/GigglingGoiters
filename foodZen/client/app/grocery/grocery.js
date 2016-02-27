@@ -36,7 +36,11 @@ angular.module('foodZen.groceries', [])
   };
 
   $scope.updateRecipes = function () {
-    //get request to get users saved recipes
+    Recipes.getUserRecipes()
+    .then(function(recipes) {
+      $scope.data.recipes = recipes;
+      console.log($scope.data.recipes);
+    });
   };
 
   $scope.deleteGrocery = function(grocery) {
