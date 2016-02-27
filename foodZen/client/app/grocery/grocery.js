@@ -12,7 +12,10 @@ angular.module('foodZen.groceries', [])
   $scope.addGrocery = function () {
     var arrayify = [];
     arrayify.push($scope.newGrocery);
-    Groceries.postGroceries(arrayify);
+    Groceries.postGroceries(arrayify)
+    .then(function () {
+      $scope.updateGrocery();
+    });
     $scope.newGrocery = '';
   };
 
@@ -37,10 +40,10 @@ angular.module('foodZen.groceries', [])
   };
 
   $scope.deleteGrocery = function(grocery) {
-    var arrayify = [];
-    arrayify.push(grocery);
-    Groceries.deleteGrocery(arrayify);
-    $scope.updateGrocery();
+    Groceries.deleteGroceries(grocery)
+    .then(function () {
+      $scope.updateGrocery();
+    });
   };
 
   initializeGroceries();

@@ -1,4 +1,4 @@
-angular.module('foodZen.grocery-services')
+angular.module('foodZen.grocery-services', [])
 .factory('Groceries', [ '$http', function ($http){
 
   var groceries = [];
@@ -28,12 +28,9 @@ angular.module('foodZen.grocery-services')
     });
   };
 
-  var deleteGroceries = function(groceryArray) {
-    return $http({
-      method: 'DELETE',
-      url: '/api/groceries',
-      data: {groceries: groceryArray}
-    }).then(function(res){
+  var deleteGroceries = function(grocery) {
+    return $http.delete('/api/groceries', {params: {grocery: grocery}})
+    .then(function(res){
       console.log('success with the grocery delete !');
     }, function(error){
       console.error('error with grocery delete');
@@ -43,6 +40,7 @@ angular.module('foodZen.grocery-services')
   return {
     getGroceryList: getGroceryList,
     postGroceries: postGroceries,
+    deleteGroceries: deleteGroceries,
     groceries: groceries
   };
 }]);

@@ -1,6 +1,7 @@
 var ingredientController = require('../ingredients/ingredientController.js');
 var recipeController = require('../recipes/recipeController.js');
 var userController = require('../users/userController.js');
+var groceryController = require('../groceries/groceryController.js');
 
 var helpers = require('./helpers.js');
 
@@ -22,6 +23,11 @@ module.exports = function (app, express) {
   //app.post('/api/users/', userController.addUser);
   app.post('/api/users/signin/', userController.signin);
   app.post('/api/users/signup/', userController.signup);
+
+  //Interact with Groceries
+  app.post('/api/groceries/', helpers.decode, groceryController.addGroceries);
+  app.delete('/api/groceries/', helpers.decode, groceryController.removeGroceries);
+  app.get('/api/groceries/', helpers.decode, groceryController.sendGroceries);
 
   
   // If a request is sent somewhere other than the routes above,
