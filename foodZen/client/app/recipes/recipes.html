@@ -1,12 +1,12 @@
 <h1>Recipes</h1>
 
-<h2>Here's Some Fucking Recipes You Can Make With Your Shit</h2>
+<!-- Show detailed instructions for a single recipe -->
 
 <div ng-show="singleRecipe.view">
   <div class="recipe-table">
     <h2>{{singleRecipe.recipe.data.title}}</h2>
     <img class="recipe" ng-src="{{singleRecipe.recipe.data.image}}">
-    <div class="hover-btn col-md-12">
+    <div ng-show="newRecipe"class="hover-btn col-md-12">
        <button type="button" class="close center" ng-click="saveUserRecipe(singleRecipe.recipe.data)">
           <span aria-hidden="true">Save Recipe</span>
           <span class="sr-only">Close</span>
@@ -38,6 +38,28 @@
   </table>
 </div>
 
+<!-- Display a user's saved recipes -->
+<div ng-show="savedRecipes">
+<h2>Saved Recipes</h2>
+<h3 class="error" ng-if="!data.savedRecipes.length">No recipes saved yet</h3>
+<table class="table">
+  <td ng-repeat="recipe in data.savedRecipes">
+    <div><img class="recipe" ng-click="viewRecipe(recipe.id)" ng-src="{{ recipe.image }}"></div>
+    <div class="lead">{{ recipe.title }}</div>
+    <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
+    <div class="hover-btn">
+       <button type="button" class="close saveRecipe" ng-click="deleteUserRecipe(recipe)">
+          <span aria-hidden="true">x</span>
+          <span class="sr-only">Close</span>
+       </button>
+    </div>
+  </td>
+</table>
+</div>
+
+<h2>Here's Some Fucking Recipes You Can Make With Your Shit</h2>
+
+<!-- Display 5 recipes based on a user's current cart -->
   <table class="table">
     <td ng-repeat="recipe in data.recipes">
       <div><img class="recipe" ng-click="viewRecipe(recipe.id)" ng-src="{{ recipe.image }}"></div>
@@ -52,6 +74,7 @@
     </td>
   </table>
 
+<!-- Button to show a user's saved recipes -->
   <div>
     <button class="btn-lg btn-primary col-md-3 col-md-offset-4" ng-click="getUserRecipes()">See your saved recipes</button>
   </div>
