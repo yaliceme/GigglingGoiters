@@ -42,7 +42,6 @@ module.exports = {
           'X-Mashape-Key': api_key
         },
         qs: {ingredients: ingredients},
-       
       };
       request.get(options, function (error, response, body) {
         if (error) {

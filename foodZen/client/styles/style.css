@@ -161,3 +161,7 @@ h3.error {
   text-align: center;
 }
 
+div.row.cartImages {
+  padding-top: 2em;
+}
+
