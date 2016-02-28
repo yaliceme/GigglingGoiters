@@ -128,11 +128,9 @@ module.exports = {
 
   deleteUserRecipe: function( req, res, next ){
     var recipe = JSON.parse(req.query.recipe);
-    var id = recipe.id;
+    var _id = recipe._id;
     var email = req.user.email;
-    console.log('id++++++++++++++++>>>>>>>>>>>>', id);
-    console.log('email++++++++++++++++>>>>>>>>>>>>', email);
-    Recipe.remove({email: email, id: id}, true).exec(function( err, deleted ) {
+    Recipe.remove({email: email, _id: _id}).exec(function( err, deleted) {
       if( err ) {
         console.error('Error deleting recipe', err);
         res.send(500, err);
@@ -141,5 +139,4 @@ module.exports = {
       }
     });
   }
-
 };
