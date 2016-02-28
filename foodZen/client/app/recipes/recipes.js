@@ -16,7 +16,7 @@ angular.module('foodZen.recipes', [])
 
     Recipes.getUserRecipes()
     .then(function (savedRecipes) {
-      $scope.data.savedRecipes = savedRecipes;
+      $scope.data.savedRecipes = chunk(savedRecipes, 3);
       //Don't show saved recipes title header if there are no saved recipes
       if(!savedRecipes.length) {
         $scope.savedRecipes = false;
@@ -31,7 +31,7 @@ angular.module('foodZen.recipes', [])
     .then(function (savedRecipes) {
       $scope.newRecipe = false;
       $scope.savedRecipes = true;
-      $scope.data.savedRecipes = savedRecipes;
+      $scope.data.savedRecipes = chunk(savedRecipes, 3);
       console.log('saved recipes: ', $scope.data.recipes);
     });
   };
@@ -105,6 +105,14 @@ angular.module('foodZen.recipes', [])
     }, function (error) {
       console.error('error with deleting recipe', error);
     });
+  };
+
+   var chunk = function (arr, size) {
+    var newArr = [];
+    for (var i=0; i<arr.length; i+=size) {
+      newArr.push(arr.slice(i, i+size));
+    }
+    return newArr;
   };
 
 });
