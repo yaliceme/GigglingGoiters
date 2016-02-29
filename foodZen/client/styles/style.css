@@ -115,6 +115,9 @@ td:hover {
   background-color: #F5F8FA;
 }
 
+/*
+**  Ingredients - Baskets
+*/
 .baskets ul {
   margin: 0 auto;
   text-align: center;
@@ -122,17 +125,55 @@ td:hover {
 
 .baskets li {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
   width:10%;
   height: 100px;
   border: 1px;
   border-style: solid;
   text-align: center;
-  margin: .1%;
+  margin: .3%;
+}
+
+.baskets li:hover {
+  background-color: #F5F8FA;
+}
+
+.baskets li:active {
+  background-color: #F5F8FA;
 }
 
 .baskets {
   text-align: center;
+  font-size: 18px;
+}
+
+li.basket-item {
+  padding-top: 35px;
+  background-color: #ff3333;
+  cursor: pointer;
+
+}
+
+div.basket {
+  padding: 10px;
+}
+
+.basket ul {
+  margin-left: -40px;
+}
+
+button.add-basket {
+  margin: 10px;
+}
+
+.baskets p {
+  font-size: 14px;
+}
+
+.ingredient-cart .default-cart {
+  text-align: center;
+  margin: auto;
+  background-color: red;
 }
 
 /*
@@ -151,6 +192,7 @@ img.recipe {
   display: block;
   margin:auto;
 }
+
 .lead {
   word-wrap:break-word;
   text-align: center;
@@ -159,7 +201,6 @@ img.recipe {
 div.hover-btn {
   text-align: center;
 }
-
 
 .recipe-table {
   text-align: center;
@@ -210,7 +251,6 @@ div.spiffyGif {
 }
 
 ul.glist-recipe {
-  
   text-align: center;
 }
 
@@ -232,7 +272,6 @@ ul.glist-recipe {
 }
 
 ul.glist-ingredients {
-
   text-align: left;
   padding: 10px;
   list-style: square;
