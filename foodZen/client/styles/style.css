@@ -190,3 +190,15 @@ div.row.cartImages {
 div.spiffyGif {
   padding: 50px;
 }
+
+input.signup {
+  margin-top: 20px;
+}
+
+button.signup {
+  margin-top: 20px;
+}
+
+div.anchor.signup {
+  margin-top: 30px;
+}

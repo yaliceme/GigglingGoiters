@@ -1,9 +1,15 @@
 <h1>Signup</h1>
-<div class='signup'>
+<div class='signup container'>
   <form name="signupForm" ng-submit='signup()'>
-    <input type='email' placeholder="Email" ng-model='user.email'>
-    <input type="password" placeholder="password" ng-model='user.password'>
-    <button>signup</button>
+    <div class="row">
+    <input class='col-md-3 col-md-offset-3 signup input-lg' type='email' placeholder="Email" ng-model='user.email'>
+    <input class='col-md-3 col-md-offset-1 signup input-lg' type="password" placeholder="Password" ng-model='user.password'>
+    </div>
+    <div class="row">
+    <button class='signup col-md-3 col-md-offset-5 btn-primary btn-lg'>signup</button>
+    </div>
   </form>
-  <a href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+  <div class="row anchor signup">
+  <a class="lead col-md-3 col-md-offset-5" href="#/signin">Already have an account? <strong>Signin</strong> ...</a>
+  </div>
 </div>
