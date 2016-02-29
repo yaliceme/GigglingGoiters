@@ -1,6 +1,7 @@
 angular.module('foodZen.groceries', [])
 .controller('GroceryController', function($scope, Recipes, Ingredients, Groceries) {
   $scope.data = {};
+  $scope.selected = [];
 
   var initializeGroceries = function() {
     $scope.updateGrocery();
@@ -17,6 +18,14 @@ angular.module('foodZen.groceries', [])
     }
   };
 
+  $scope.checkAll = function() {
+    $scope.selected = angular.copy($scope.data.recipes);
+  };
+
+  $scope.uncheckAll = function() {
+    $scope.selected = [];
+  };
+
   $scope.addGrocery = function () {
     var arrayify = [];
     arrayify.push($scope.newGrocery);
@@ -25,6 +34,7 @@ angular.module('foodZen.groceries', [])
       $scope.updateGrocery();
     });
     $scope.newGrocery = '';
+    console.log($scope.selected);
   };
 
   $scope.updateGrocery = function() {
