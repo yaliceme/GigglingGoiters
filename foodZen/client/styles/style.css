@@ -136,6 +136,8 @@ td:hover {
 
 .baskets li:hover {
   background-color: #F5F8FA;
+  transition-property: all;
+  transition-duration: 300ms;
 }
 
 .baskets li:active {
