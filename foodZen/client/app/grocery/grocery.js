@@ -90,6 +90,10 @@ angular.module('foodZen.groceries', [])
     });
   };
 
+  $scope.expand = function(recipe) {
+       recipe.show = !recipe.show;
+    }
+
   $scope.updateRecipes = function () {
     Recipes.getUserRecipes()
     .then(function(recipes) {
