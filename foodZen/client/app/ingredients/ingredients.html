@@ -21,7 +21,7 @@
     <div class="col-md-1"></div>
     <div class="defaultCart lead col-md-3">
     <h2>Save Time!</h2>
-      <img ng-src="../../assets/basket.jpg" class="btn" ng-click="showDefaultCarts()">
+      <a ng-click="showDefaultCarts('baskets')"><img ng-src="../../assets/basket.jpg" class="btn" ></a>
       <div>Bulk add common staples to your cart
       </div>
     </div>
@@ -45,8 +45,8 @@
 </table>
 
 
-<div class="baskets" ng-show="defaultCarts">
-  <h3>Got a lot of ingredients in your kitchen? Save time by bulk-adding some of these common staples.</h3>
+<div class="baskets" ng-show="defaultCarts" id="baskets">
+  <h3>Add some common staples.</h3>
   <div ng-repeat="basket in baskets track by $index">
     {{ basket.name }}<br/><button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
     <ul>
