@@ -11,8 +11,10 @@
 <div class='container'>
 <div class='signin'>
   <form name="signinForm" ng-submit='signin()'>
-    <input class="input-lg" type='email' placeholder="email" ng-model='user.email'>
-    <input class="input-lg" type="password" placeholder="password" ng-model='user.password'>
+    <div class="row">
+      <input class="input-lg" type='email' placeholder="email" ng-model='user.email'>
+      <input class="input-lg" type="password" placeholder="password" ng-model='user.password'>
+    </div>
     <div class="row">
       <button class="col-md-2 col-md-offset-5 btn-lg signin btn-primary">Sign in</button>
     </div>
