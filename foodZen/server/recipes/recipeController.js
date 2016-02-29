@@ -109,7 +109,9 @@ module.exports = {
 
   },
 
+
   getRecipeDetails: function( req, res, next ) {
+
     var id = req.body.id;
     var options = {
       url: findRecipeDetails + id + '/information',
@@ -122,6 +124,7 @@ module.exports = {
         console.log("Error with getRecipeDetails request:", error);
       } else {
       res.end(body);
+
       }
     });
   },

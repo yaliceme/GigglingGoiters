@@ -1,6 +1,8 @@
 var jwt = require('jwt-simple');
 var Ingredient = require('../ingredients/ingredientModel.js');
 var User_Recipe = require('../user_recipe/user_recipeModel.js');
+var Grocery = require('../groceries/groceryModel.js');
+
 
 module.exports = {
   errorLogger: function (error, req, res, next) {
@@ -57,6 +59,38 @@ module.exports = {
             res.send( 500, err );
           } else {
             console.log('new user created in Ingredients db', newUser);
+            res.send(200, newUser);
+          }
+        });
+      }
+    });
+  },
+
+  findUser_Groceries: function ( req, res, next, callback ) {
+    var groceries = req.body.groceries;
+    var email = req.user.email;
+    Grocery.findOne({email: email}).exec(function( err, found) {
+      if( found ) {
+        callback ( found );
+        found.save(function( err, found ) {
+          if( err ) {
+            console.error( 'Error interacting with grocery, ', err);
+            res.send(500);
+          } else {
+            console.log('successfully acted upon grocery: ', found);
+            res.send(200, found);
+          }
+        });
+      } else {
+        var newGrocery =  new Grocery({
+          email: email,
+          groceries: groceries
+        });
+        newGrocery.save(function(err, newUser){
+          if( err ) {
+            res.send( 500, err );
+          } else {
+            console.log('new user created in Groceries db', newUser);
             res.send(200, newUser);
           }
         });

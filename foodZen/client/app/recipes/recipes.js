@@ -100,7 +100,7 @@ angular.module('foodZen.recipes', [])
   $scope.viewRecipe = function(id){
     return $http({
       method: 'POST',
-      url: '/api/recipes/ingredients/',
+      url: '/api/recipes/ingredients',
       data: {id: id}
     }).then(function( recipe ){
       $scope.singleRecipe.view = true;
