@@ -4,6 +4,8 @@ angular.module('foodZen.ingredients', [])
   $scope.ingredientList = false;
   $scope.defaultCarts = false;
   $anchorScroll.yOffset = 100;
+  $scope.ingredientAdded = false;
+  $scope.newIngredient = '';
 
   $scope.showDefaultCarts = function(id) {
     $scope.defaultCarts = !$scope.defaultCarts;
@@ -48,6 +50,8 @@ angular.module('foodZen.ingredients', [])
       initializeIngredients();
     });
     $scope.ingredient = '';
+    $scope.newIngredient = ingredient;
+    $scope.ingredientAdded = true;
   };
 
   $scope.removeIngredient = function(ingredient) {
