@@ -6,11 +6,16 @@ angular.module('foodZen.recipes', [])
   $scope.singleRecipe.view = false;
   // Show saved recipes when true
   $scope.savedRecipes = false;
+  $scope.spiffyGif = false;
+  $scope.loaded = false;
 
   //Get recipes from current cart and user's saved collection
   var initializeRecipes = function(){
+    $scope.spiffyGif = true;
     Recipes.updateRecipes(Ingredients.ingredients)
     .then(function (recipes) {
+      $scope.spiffyGif = false;
+      $scope.loaded = true;
       $scope.data.recipes = recipes;
     });
 
