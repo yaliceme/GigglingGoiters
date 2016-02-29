@@ -11,16 +11,16 @@
 </div>
 
 <!-- Food cart images -->
-<div class="container">
+<div class="container carts">
   <div class="row lead cartImages">
-    <div class="ingredientCart lead col-md-3 col-md-offset-2">
+    <div class="ingredient-cart lead col-md-3 col-md-offset-2">
      <h2>Current Cart</h2>
       <a ng-click="showIngredients('userIngredients')"><img ng-src="../../assets/basket.jpg" class="btn"></a>
       <div>See what's in your cart
       </div>
     </div>
     <div class="col-md-1"></div>
-    <div class="defaultCart lead col-md-3">
+    <div class="default-cart lead col-md-3">
     <h2>Save Time</h2>
       <a ng-click="showDefaultCarts('baskets')"><img ng-src="../../assets/basket.jpg" class="btn" ></a>
       <div>Bulk add common staples
@@ -50,19 +50,18 @@
   </table>
 </div>
 
-
+<!-- Baskets/Common staples display -->
 <div class="baskets" ng-show="defaultCarts" id="baskets">
   <div class="row">
     <h2 class="col-md-12 grayStroke">Common Staples</h2>
+    <p ng-show="ingredientAdded">Added {{newIngredient}} to cart</p>
   </div>
-  <div ng-repeat="basket in baskets track by $index">
-    {{ basket.name }}<br/><button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
+  <div class="basket" ng-repeat="basket in baskets track by $index">
+    {{ basket.name }}<br/><button class="add-basket btn-lg btn-primary" ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
     <ul>
-      <li ng-repeat="item in basket.contents track by $index">{{item}}<br/><button ng-click="addIngredient(item)">Add</button></li>
+      <li class="basket-item" ng-click="addIngredient(item)" ng-repeat="item in basket.contents track by $index">{{item}}
+      </li>
     </ul>
   </div>
 </div>
-
-<a class="citation" href="http://www.freepik.com/free-photos-vectors/food">Food vector designed by Freepik</a>
-<a class="citation" href='http://www.freepik.com/free-vector/fruit-icons-in-flat-design_821725.htm'>Designed by Freepik</a>
 
