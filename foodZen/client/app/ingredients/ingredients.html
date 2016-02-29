@@ -1,7 +1,7 @@
 
 <h1>Ingredients</h1>
 
-<h2>Add ingredients that you have!</h2>
+<h2>Add your ingredients!</h2>
 
 <div class="ingredient-submission span4">
   <input class="input-lg" ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event, ingredient)">
@@ -15,14 +15,14 @@
     <div class="ingredientCart lead col-md-3 col-md-offset-2">
      <h2>Current Cart</h2>
       <a ng-click="showIngredients('userIngredients')"><img ng-src="../../assets/basket.jpg" class="btn"></a>
-      <div>See what's already in your cart
+      <div>See what's in your cart
       </div>
     </div>
     <div class="col-md-1"></div>
     <div class="defaultCart lead col-md-3">
-    <h2>Save Time!</h2>
+    <h2>Save Time</h2>
       <a ng-click="showDefaultCarts('baskets')"><img ng-src="../../assets/basket.jpg" class="btn" ></a>
-      <div>Bulk add common staples to your cart
+      <div>Bulk add common staples
       </div>
     </div>
    </div>
@@ -30,7 +30,9 @@
 
 <!-- Ingredient table, displays ingredients in rows of three-->
 <div id="userIngredients" ng-show="ingredientList">
-  <h2>Your Ingredients</h2>
+  <div class="row">
+    <h2 class="col-md-12 purpleStroke">Your Ingredients</h2>
+  </div>
   <table class="table" >
     <tr ng-repeat="rows in chunkedData">
        <td class="lead" ng-repeat="item in rows track by $index">
@@ -49,7 +51,9 @@
 
 
 <div class="baskets" ng-show="defaultCarts" id="baskets">
-  <h2>Common Staples.</h2>
+  <div class="row">
+    <h2 class="col-md-12 blueStroke">Common Staples</h2>
+  </div>
   <div ng-repeat="basket in baskets track by $index">
     {{ basket.name }}<br/><button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
     <ul>

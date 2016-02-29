@@ -202,3 +202,26 @@ button.signup {
 div.anchor.signup {
   margin-top: 30px;
 }
+
+div.signin.anchor {
+  margin-top: 20px;
+}
+
+button.signin {
+  margin-top: 20px;
+}
+
+/*h2.purpleStroke {
+  background-color: rgba(210, 141, 204, 0.3);
+  padding: 50px;
+}*/
+
+div.userIngredients {
+  margin-bottom: 50px;
+}
+
+/*h2.blueStroke {
+  background-color: rgba(110, 137, 196, 0.87);
+  padding: 50px;
+  z-index: 20;
+}*/
