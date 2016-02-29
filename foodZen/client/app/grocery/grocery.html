@@ -3,7 +3,11 @@
 <div class="recipe-glist">
   <ul>
     <li ng-repeat="recipe in data.recipes">
-    <input type="checkbox">{{ recipe }}</li>
+    <input type="checkbox"><span>{{ recipe.title }}</span>
+      <ul>
+        <li ng-repeat='ingredient in recipe.ingredients'>{{ ingredient.name }}</li>
+      </ul>
+    </li>
   </ul>
 </div>
 <div class="glist">

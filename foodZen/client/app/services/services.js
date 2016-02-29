@@ -49,12 +49,27 @@ angular.module('foodZen.services', [])
     });
   };
 
+  var viewRecipe = function(id){
+    return $http({
+      method: 'POST',
+      url: '/api/recipes/ingredients',
+      data: {id: id}
+    }).then(function( recipe ){
+      //callback(recipe);
+      console.log('got recipe details', recipe);
+      return recipe;
+    }, function(error) {
+      console.error('error with recipe details');
+    });
+  };
+
   return {
     getRecipes: getRecipes,
     updateRecipes: updateRecipes,
     recipes: recipes,
     getUserRecipes: getUserRecipes,
-    postUserRecipe: postUserRecipe
+    postUserRecipe: postUserRecipe,
+    viewRecipe: viewRecipe
   };
 }])
 

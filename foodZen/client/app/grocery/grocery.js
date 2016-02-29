@@ -9,6 +9,14 @@ angular.module('foodZen.groceries', [])
     $scope.updateRecipes();
   };
 
+  var findWithAttr = function(array, attr, value) {
+    for(var i = 0; i < array.length; i += 1) {
+      if(array[i][attr] === value) {
+        return i;
+      }
+    }
+  };
+
   $scope.addGrocery = function () {
     var arrayify = [];
     arrayify.push($scope.newGrocery);
@@ -39,7 +47,15 @@ angular.module('foodZen.groceries', [])
     Recipes.getUserRecipes()
     .then(function(recipes) {
       $scope.data.recipes = recipes;
-      console.log($scope.data.recipes);
+      for(var i = 0; i < recipes.length; i++){
+        Recipes.viewRecipe(recipes[i].id)
+        .then(function (recipe) {
+          var index = findWithAttr(recipes, "id", recipe.data.id);
+          recipes[index].ingredients = recipe.data.extendedIngredients;
+          //console.log("ingredients: ", recipes[index].ingredients);
+        });
+      }
+      //console.log("HERE: ", $scope.data.recipes);
     });
   };
 
