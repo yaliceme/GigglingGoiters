@@ -26,16 +26,20 @@ describe('Ingredient Controller', function () {
 
       ingredients = [
         {
-          user_id: 1,
-          ingredient: ['apple']
+          email: 'vincent@gmail.com',
+          ingredients: ['apple']
         },
         {
-          user_id: 2,
-          ingredient: ['bacon']
+          email: 'peter@gmail.com',
+          ingredients: ['bacon']
         },
         {
-          user_id: 3,
-          ingredient: ['chicken']
+          email: 'alice@gmail.com',
+          ingredients: ['chicken']
+        },
+        {
+          email: 'blaze@gmail.com',
+          ingredients: ['salt', 'pepper']
         }
       ];
 
@@ -45,7 +49,10 @@ describe('Ingredient Controller', function () {
 
   // Lets start testing~!
   it('should have a method to add a given ingredient', function (done) {
-
+    var newIngredient = {
+      ingredient: 'turkey'
+    };
+    //IngredientController.addIngredient(newIngredient)
   });
 
   it('should have a method to read all ingredients', function (done) {
