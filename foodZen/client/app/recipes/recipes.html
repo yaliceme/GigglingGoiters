@@ -39,7 +39,7 @@
 </div>
 
 <!-- Display a user's saved recipes -->
-<div ng-show="savedRecipes" id="allSaved">
+<div ng-show="savedRecipes" id="savedRecipes">
 <h2>Saved Recipes</h2>
 <h3 class="error" ng-if="!data.savedRecipes.length">No recipes saved yet</h3>
 <table class="table">
@@ -60,16 +60,16 @@
 
 <div class="spiffyGif col-md-2 col-md-offset-5" ng-show="spiffyGif"><img ng-src="../../assets/329.gif"></div>
 <div ng-show="loaded">
-<h2>Here's Some Fucking Recipes You Can Make With Your Shit</h2>
+<h2>Recipes</h2>
 
-<!-- Display 6 recipes based on a user's current cart -->
+<!-- Display 5 recipes based on a user's current cart -->
   <table class="table">
     <td ng-repeat="recipe in data.recipes">
-      <div class="btn" ng-click="viewRecipe(recipe.id)">
+      <a class="btn" ng-click="viewRecipe(recipe.id)">
         <img class="recipe" ng-src="{{ recipe.image }}">
         <div class="lead">{{ recipe.title }}
         </div>
-      </div>
+      </a>
       <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
       <div class="hover-btn">
          <button type="button" class="close saveRecipe" ng-click="saveUserRecipe(recipe)">

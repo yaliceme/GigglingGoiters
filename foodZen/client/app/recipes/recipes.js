@@ -1,5 +1,5 @@
 angular.module('foodZen.recipes', [])
-.controller('RecipeController', function($scope, $http, Recipes, Ingredients){
+.controller('RecipeController', function($scope, $http, Recipes, Ingredients, $location, $anchorScroll, $timeout){
   $scope.data = {};
   $scope.singleRecipe = {};
   // show detailed singleRecipe when true
@@ -8,6 +8,16 @@ angular.module('foodZen.recipes', [])
   $scope.savedRecipes = false;
   $scope.spiffyGif = false;
   $scope.loaded = false;
+  $anchorScroll.yOffset = 100;
+
+   $scope.scrollTo = function (id) {
+    var old = $location.hash();
+    $timeout(function() {
+      $location.hash(id);
+      $anchorScroll();
+      $location.hash(old);
+    });
+  };
 
   //Get recipes from current cart and user's saved collection
   var initializeRecipes = function(){
@@ -37,7 +47,7 @@ angular.module('foodZen.recipes', [])
       $scope.newRecipe = false;
       $scope.savedRecipes = true;
       $scope.data.savedRecipes = chunk(savedRecipes, 3);
-      console.log('saved recipes: ', $scope.data.recipes);
+      $scope.scrollTo('savedRecipes');
     });
   };
 
@@ -93,9 +103,9 @@ angular.module('foodZen.recipes', [])
       url: '/api/recipes/ingredients/',
       data: {id: id}
     }).then(function( recipe ){
-      console.log('DID WE GET THE RECIPE BACK?', recipe);
       $scope.singleRecipe.view = true;
       adjustRecipe(recipe);
+      $scope.scrollTo('singleRecipe');
     });
   };
   initializeRecipes();
