@@ -64,24 +64,23 @@
 
 <!-- Display 5 recipes based on a user's current cart -->
   <table class="table">
-    <td ng-repeat="recipe in data.recipes">
-      <a class="btn" ng-click="viewRecipe(recipe.id)">
+    <td class="recipe-search-table" ng-repeat="recipe in data.recipes">
+      <a class="recipe-result" ng-click="viewRecipe(recipe.id)">
         <img class="recipe" ng-src="{{ recipe.image }}">
-        <div class="lead">{{ recipe.title }}
-        </div>
+        <div class="lead">{{ recipe.title }}</div>
       </a>
-      <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
       <div class="hover-btn">
-         <button type="button" class="close saveRecipe" ng-click="saveUserRecipe(recipe)">
-            <span aria-hidden="true">Save Recipe</span>
-            <span class="sr-only">Close</span>
+        <div class="small">{{recipe.missedIngredientCount}} missing ingredients.</div>
+        <button type="button" class="close saveRecipe" ng-click="saveUserRecipe(recipe)">
+          <span aria-hidden="true">Save Recipe</span>
+          <span class="sr-only">Close</span>
          </button>
       </div>
     </td>
   </table>
 
 <!-- Button to show a user's saved recipes -->
-  <div>
+  <div class="show-saved-btn">
     <button class="btn-lg btn-primary col-md-3 col-md-offset-4" ng-click="getUserRecipes()">See your saved recipes</button>
   </div>
 </div>
