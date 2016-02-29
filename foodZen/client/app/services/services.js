@@ -84,6 +84,9 @@ angular.module('foodZen.services', [])
       url: '/api/ingredients',
       data: {ingredient: ingredient}
     }).then(function(res){
+      if(!ingredients){
+        ingredients = [];
+      }
       ingredients.push(ingredient);
       console.log('success with the ingredient post !');
       callback();

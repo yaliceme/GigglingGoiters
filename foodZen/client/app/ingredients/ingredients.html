@@ -32,7 +32,7 @@
 <!-- Ingredient table, displays ingredients in rows of three-->
 <div id="userIngredients" ng-show="ingredientList">
   <div class="row">
-    <h2 class="col-md-12 purpleStroke">Your Ingredients</h2>
+    <h2 id="grad" class="col-md-12 grayStroke">Your Ingredients</h2>
   </div>
   <table class="table" >
     <tr ng-repeat="rows in chunkedData">
@@ -53,7 +53,7 @@
 
 <div class="baskets" ng-show="defaultCarts" id="baskets">
   <div class="row">
-    <h2 class="col-md-12 blueStroke">Common Staples</h2>
+    <h2 class="col-md-12 grayStroke">Common Staples</h2>
   </div>
   <div ng-repeat="basket in baskets track by $index">
     {{ basket.name }}<br/><button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
