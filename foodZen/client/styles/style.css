@@ -203,9 +203,10 @@ div.spiffyGif {
 **  Grocery list
 */
 .glist-recipes {
-  width: 100%;
+  width: 60%;
   /*text-align: center;*/
   padding: 25px;
+  float: left;
 }
 
 ul.glist-recipe {
@@ -236,6 +237,14 @@ ul.glist-ingredients {
   padding: 10px;
   list-style: square;
 }
+
+div.glist {
+  width: 30%;
+  float: right;
+  height: 100%;
+  padding: 10px;
+}
+
 
 li.even {
   color: red;
