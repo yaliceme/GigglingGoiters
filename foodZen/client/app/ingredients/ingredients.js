@@ -4,6 +4,7 @@ angular.module('foodZen.ingredients', [])
   $scope.ingredientList = false;
   $scope.defaultCarts = false;
   $anchorScroll.yOffset = 100;
+  $scope.ingredientAdded = false;
 
   $scope.showDefaultCarts = function(id) {
     $scope.defaultCarts = !$scope.defaultCarts;
