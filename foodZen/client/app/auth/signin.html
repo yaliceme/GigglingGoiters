@@ -7,55 +7,22 @@
   <body>
   <h1> Welcome to FoodZen!</h1>
 
-<h2>Sign in below to get personalized recipes</h2>
-
+<h2>Sign in to get personalized recipes</h2>
+<div class='container'>
 <div class='signin'>
   <form name="signinForm" ng-submit='signin()'>
-    <input type='email' placeholder="email" ng-model='user.email'>
-    <input type="password" placeholder="password" ng-model='user.password'>
-    <button>signin</button>
+    <div class="row">
+      <input class="input-lg" type='email' placeholder="email" ng-model='user.email'>
+      <input class="input-lg" type="password" placeholder="password" ng-model='user.password'>
+    </div>
+    <div class="row">
+      <button class="col-md-2 col-md-offset-5 btn-lg signin btn-primary">Sign in</button>
+    </div>
   </form>
-    <a href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
-</div>
-
-<h2>Or sign in with Gmail</h2>
-
-<a href="#" onclick="signOut();">Sign out</a>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-</script>
-
-    <div class="g-signin2" data-onsuccess="onSignIn()" data-theme="dark"></div>
-    <script>
-    function onSignIn(googleUser) {
-          // Useful data for your client-side scripts:
-          var profile = googleUser.getBasicProfile();
-          console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-          console.log("Name: " + profile.getName());
-          console.log("Image URL: " + profile.getImageUrl());
-          console.log("Email: " + profile.getEmail());
-
-          // The ID token you need to pass to your backend:
-          var id_token = googleUser.getAuthResponse().id_token;
-          console.log("ID Token: " + id_token);
-
-          //redirect to ingredients page:
-          // $.get('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token, function( data) {
-          //   console.log('DATA FROM GET REQ=======>', data);
-          //   var clientKey = "769458325378-n76v7sfa442fku1aoe8qn8jbfdpv1jvk.apps.googleusercontent.com";
-          //   if(data.aud === clientKey) {
-          //     console.log('MATCH');
-          //    window.location.replace('http://localhost3000/ingredients');
-          //  }
-          // });
-        }
-      </script>
-  <div>
+  <div class="row signin anchor">
+    <a class="col-md-4 col-md-offset-4" href="#/signup">Don't have an account? <strong>Signup</strong> ...</a>
   </div>
+</div>
+</div>
   </body>
 </html>
