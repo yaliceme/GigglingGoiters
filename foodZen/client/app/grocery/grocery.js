@@ -6,10 +6,11 @@ angular.module('foodZen.groceries', [])
   var initializeGroceries = function() {
     $scope.updateGrocery();
     $scope.updateIngredients();
-    //get request to get users saved recipes
     $scope.updateRecipes();
   };
 
+  //helper function gets index of array of objects, based
+  //on an attribute of those objects
   var findWithAttr = function(array, attr, value) {
     for(var i = 0; i < array.length; i += 1) {
       if(array[i][attr] === value) {
@@ -18,8 +19,10 @@ angular.module('foodZen.groceries', [])
     }
   };
 
+  //this function preforms the logic for populating the grocery list
+  //it adds ingredients from selected recipes, but does not include ingredients 
+  //the user has instock and that are already on the grocery list
   $scope.groceriesFromRecipes = function() {
-    //debugger;
     if($scope.selected.length > 0){
       var ingredients = [];
       var index;
@@ -39,10 +42,9 @@ angular.module('foodZen.groceries', [])
           ingredients.splice(index, 1);
         }
       }
-      console.log('stuff to grocery: ', ingredients);
       Groceries.postGroceries(ingredients)
       .then(function () {
-        $scope.selected = [];
+        $scope.uncheckAll();
         $scope.updateGrocery();
       })
     }
@@ -70,10 +72,11 @@ angular.module('foodZen.groceries', [])
     Groceries.getGroceryList()
     .then(function(groceries) {
       $scope.data.groceries = groceries;
-      console.log($scope.data.groceries);
     });
   };
 
+  //used in the ingredients portion of grocery.html
+  //adds css class to ingredients the user has instock
   $scope.getClass = function (ingredient) {
     return {
       instock: $scope.data.ingredients.indexOf(ingredient) !== -1
@@ -84,7 +87,6 @@ angular.module('foodZen.groceries', [])
     Ingredients.getIngredients()
     .then(function(ingredients) {
       $scope.data.ingredients = ingredients;
-      console.log($scope.data.ingredients);
     });
   };
 
@@ -92,15 +94,16 @@ angular.module('foodZen.groceries', [])
     Recipes.getUserRecipes()
     .then(function(recipes) {
       $scope.data.recipes = recipes;
+      //console.log('recipesssssss', $scope.data.recipes);
       for(var i = 0; i < recipes.length; i++){
+        //gets extended info (ingredients) for each recipe
         Recipes.viewRecipe(recipes[i].id)
         .then(function (recipe) {
           var index = findWithAttr(recipes, "id", recipe.data.id);
           recipes[index].ingredients = recipe.data.extendedIngredients;
-          //console.log("ingredients: ", recipes[index].ingredients);
+          recipes[index].image = recipe.data.image;
         });
       }
-      //console.log("HERE: ", $scope.data.recipes);
     });
   };
 
