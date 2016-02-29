@@ -1,7 +1,7 @@
 angular.module('foodZen.groceries', [])
 .controller('GroceryController', function($scope, Recipes, Ingredients, Groceries) {
   $scope.data = {};
-  $scope.selected = [];
+  $scope.data.selected = [];
 
   var initializeGroceries = function() {
     $scope.updateGrocery();
@@ -23,11 +23,11 @@ angular.module('foodZen.groceries', [])
   //it adds ingredients from selected recipes, but does not include ingredients 
   //the user has instock and that are already on the grocery list
   $scope.groceriesFromRecipes = function() {
-    if($scope.selected.length > 0){
+    if($scope.data.selected.length > 0){
       var ingredients = [];
       var index;
-      for(var i = 0; i < $scope.selected.length; i++){
-        index = findWithAttr($scope.data.recipes, 'title', $scope.selected[i]);
+      for(var i = 0; i < $scope.data.selected.length; i++){
+        index = findWithAttr($scope.data.recipes, 'title', $scope.data.selected[i]);
         var recipeIngredients = $scope.data.recipes[index].ingredients;
         for(var j = 0; j < recipeIngredients.length; j++){
           if(ingredients.indexOf(recipeIngredients[j].name) === -1){
@@ -50,12 +50,8 @@ angular.module('foodZen.groceries', [])
     }
   };
 
-  $scope.checkAll = function() {
-    $scope.selected = angular.copy($scope.data.recipes);
-  };
-
   $scope.uncheckAll = function() {
-    $scope.selected = [];
+    $scope.data.selected = [];
   };
 
   $scope.addGrocery = function () {
