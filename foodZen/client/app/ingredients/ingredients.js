@@ -1,15 +1,33 @@
 angular.module('foodZen.ingredients', [])
-.controller('IngredientController', function($scope, $http, $location, Ingredients, Auth, Recipes, Baskets){
+.controller('IngredientController', function($scope, $http, $location, Ingredients, Auth, Recipes, Baskets, $anchorScroll, $timeout){
 
   $scope.ingredientList = false;
   $scope.defaultCarts = false;
+  $anchorScroll.yOffset = 100;
 
-  $scope.showDefaultCarts = function() {
+  $scope.showDefaultCarts = function(id) {
     $scope.defaultCarts = !$scope.defaultCarts;
+    console.log('scope default carts', $scope.defaultCarts);
+    if($scope.defaultCarts) {
+      $scope.scrollTo(id);
+    }
   };
 
-  $scope.showIngredients = function() {
+  $scope.showIngredients = function(id) {
     $scope.ingredientList = !$scope.ingredientList;
+    console.log('scope ingredients show', $scope.ingredientList);
+    if($scope.ingredientList) {
+      $scope.scrollTo(id);
+    }
+  };
+
+   $scope.scrollTo = function (id) {
+    var old = $location.hash();
+    $timeout(function() {
+      $location.hash(id);
+      $anchorScroll();
+      $location.hash(old);
+    });
   };
 
   var initializeIngredients = function(){

@@ -14,14 +14,14 @@
   <div class="row lead cartImages">
     <div class="ingredientCart lead col-md-3 col-md-offset-2">
      <h2>Current Cart</h2>
-      <img ng-src="../../assets/basket.jpg" class="btn" ng-click="showIngredients()">
+      <a ng-click="showIngredients('userIngredients')"><img ng-src="../../assets/basket.jpg" class="btn"></a>
       <div>See what's already in your cart
       </div>
     </div>
     <div class="col-md-1"></div>
     <div class="defaultCart lead col-md-3">
     <h2>Save Time!</h2>
-      <img ng-src="../../assets/basket.jpg" class="btn" ng-click="showDefaultCarts()">
+      <a ng-click="showDefaultCarts('baskets')"><img ng-src="../../assets/basket.jpg" class="btn" ></a>
       <div>Bulk add common staples to your cart
       </div>
     </div>
@@ -29,24 +29,27 @@
  </div>
 
 <!-- Ingredient table, displays ingredients in rows of three-->
-<table class="table" ng-show="ingredientList">
-  <tr ng-repeat="rows in chunkedData">
-     <td class="lead" ng-repeat="item in rows track by $index">
-     <img class="fruit" ng-src="../../assets/apple.jpg">
-     {{ item }}
-     <div class="hover-btn">
-        <button type="button" class="close" ng-click="removeIngredient(item)">
-           <span aria-hidden="true">x</span>
-           <span class="sr-only">Close</span>
-        </button>
-     </div>
-     </td>
-  </tr>
-</table>
+<div id="userIngredients" ng-show="ingredientList">
+  <h2>Your Ingredients</h2>
+  <table class="table" >
+    <tr ng-repeat="rows in chunkedData">
+       <td class="lead" ng-repeat="item in rows track by $index">
+       <img class="fruit" ng-src="../../assets/apple.jpg">
+       {{ item }}
+       <div class="hover-btn">
+          <button type="button" class="close" ng-click="removeIngredient(item)">
+             <span aria-hidden="true">x</span>
+             <span class="sr-only">Close</span>
+          </button>
+       </div>
+       </td>
+    </tr>
+  </table>
+</div>
 
 
-<div class="baskets" ng-show="defaultCarts">
-  <h3>Got a lot of ingredients in your kitchen? Save time by bulk-adding some of these common staples.</h3>
+<div class="baskets" ng-show="defaultCarts" id="baskets">
+  <h2>Common Staples.</h2>
   <div ng-repeat="basket in baskets track by $index">
     {{ basket.name }}<br/><button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
     <ul>
