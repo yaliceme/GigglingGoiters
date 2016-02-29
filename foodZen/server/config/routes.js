@@ -9,9 +9,9 @@ module.exports = function (app, express) {
   //Interact with Recipes
   app.get('/api/recipes/', helpers.decode, recipeController.getRecipes);
   app.get('/api/users/recipes/', helpers.decode, recipeController.getSavedRecipes);
-  //the route below should save a recipe to User_Recipe AND to Recipes
   app.post('/api/users/recipes/', helpers.decode, recipeController.saveRecipe);
   app.post('/api/recipes/ingredients/', recipeController.getRecipeDetails);
+  app.delete('/api/users/recipes', helpers.decode, recipeController.deleteUserRecipe);
 
   //Interact with Ingredients
   app.post('/api/ingredients/', helpers.decode, ingredientController.addIngredient);

@@ -1,6 +1,17 @@
 angular.module('foodZen.ingredients', [])
 .controller('IngredientController', function($scope, $http, $location, Ingredients, Auth, Recipes, Baskets){
 
+  $scope.ingredientList = false;
+  $scope.defaultCarts = false;
+
+  $scope.showDefaultCarts = function() {
+    $scope.defaultCarts = !$scope.defaultCarts;
+  };
+
+  $scope.showIngredients = function() {
+    $scope.ingredientList = !$scope.ingredientList;
+  };
+
   var initializeIngredients = function(){
       Ingredients.getIngredients()
       .then(function (ingredients) {

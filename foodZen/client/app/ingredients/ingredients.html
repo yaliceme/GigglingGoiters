@@ -1,31 +1,51 @@
+
 <h1>Ingredients</h1>
 
-<h2>Add the ingredients that you have!</h2>
+<h2>Add ingredients that you have!</h2>
 
 <div class="ingredient-submission span4">
   <input class="input-lg" ng-model="ingredient" placeholder="type ingredients here" ng-keypress="hitEnter($event, ingredient)">
   <button class="btn-lg btn-primary" type="submit" ng-click="addIngredient(ingredient)">Add Ingredient</button>
   <button class="btn-lg btn-primary" type="submit" ng-click="goRecipes(ingredients)">Get Recipes</button>
-  <table class="table">
-    <tr ng-repeat="rows in chunkedData">
-       <td class="lead" ng-repeat="item in rows track by $index">
-       <img class="fruit" ng-src="../../assets/apple.jpg">
-       {{ item }}
-       <div class="hover-btn">
-          <button type="button" class="close" ng-click="removeIngredient(item)">
-             <span aria-hidden="true">x</span>
-             <span class="sr-only">Close</span>
-          </button>
-       </div>
-       </td>
-    </tr>
-  </table>
 </div>
 
-<a class="citation" href="http://www.freepik.com/free-photos-vectors/food">Food vector designed by Freepik</a>
-<a class="citation" href='http://www.freepik.com/free-vector/fruit-icons-in-flat-design_821725.htm'>Designed by Freepik</a>
+<!-- Food cart images -->
+<div class="container">
+  <div class="row lead cartImages">
+    <div class="ingredientCart lead col-md-3 col-md-offset-2">
+     <h2>Current Cart</h2>
+      <img ng-src="../../assets/basket.jpg" class="btn" ng-click="showIngredients()">
+      <div>See what's already in your cart
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="defaultCart lead col-md-3">
+    <h2>Save Time!</h2>
+      <img ng-src="../../assets/basket.jpg" class="btn" ng-click="showDefaultCarts()">
+      <div>Bulk add common staples to your cart
+      </div>
+    </div>
+   </div>
+ </div>
 
-<div class="baskets">
+<!-- Ingredient table, displays ingredients in rows of three-->
+<table class="table" ng-show="ingredientList">
+  <tr ng-repeat="rows in chunkedData">
+     <td class="lead" ng-repeat="item in rows track by $index">
+     <img class="fruit" ng-src="../../assets/apple.jpg">
+     {{ item }}
+     <div class="hover-btn">
+        <button type="button" class="close" ng-click="removeIngredient(item)">
+           <span aria-hidden="true">x</span>
+           <span class="sr-only">Close</span>
+        </button>
+     </div>
+     </td>
+  </tr>
+</table>
+
+
+<div class="baskets" ng-show="defaultCarts">
   <h3>Got a lot of ingredients in your kitchen? Save time by bulk-adding some of these common staples.</h3>
   <div ng-repeat="basket in baskets track by $index">
     {{ basket.name }}<br/><button ng-click="addBasket(basket)">Add all ingredients from {{basket.name}}</button>
@@ -34,3 +54,7 @@
     </ul>
   </div>
 </div>
+
+<a class="citation" href="http://www.freepik.com/free-photos-vectors/food">Food vector designed by Freepik</a>
+<a class="citation" href='http://www.freepik.com/free-vector/fruit-icons-in-flat-design_821725.htm'>Designed by Freepik</a>
+

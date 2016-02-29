@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var recipeSchema = mongoose.Schema({
     id: Number,
     title: String,
+    image: String,
     email: String
 });
 

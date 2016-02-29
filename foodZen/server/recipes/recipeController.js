@@ -41,7 +41,7 @@ module.exports = {
         headers: {
           'X-Mashape-Key': api_key
         },
-        qs: {ingredients: ingredients}
+        qs: {ingredients: ingredients},
       };
       request.get(options, function (error, response, body) {
         if (error) {
@@ -74,6 +74,7 @@ module.exports = {
     // create recipe entry to save
     var entry = {
       title: recipe.title,
+      image: recipe.image,
       id: recipe.id,
       email: email
     };
@@ -108,7 +109,7 @@ module.exports = {
 
   },
 
-  getRecipeDetails: function( req, res, next, callback) {
+  getRecipeDetails: function( req, res, next ) {
     var id = req.body.id;
     var options = {
       url: findRecipeDetails + id + '/information',
@@ -119,17 +120,23 @@ module.exports = {
     request.get(options, function (error, response, body) {
       if (error) {
         console.log("Error with getRecipeDetails request:", error);
-        if( callback ) {
-          callback( error );
-        }
       } else {
-        if( callback ){
-          callback( body );
-        } else {
-        res.end(body);
-        }
+      res.end(body);
+      }
+    });
+  },
+
+  deleteUserRecipe: function( req, res, next ){
+    var recipe = JSON.parse(req.query.recipe);
+    var _id = recipe._id;
+    var email = req.user.email;
+    Recipe.remove({email: email, _id: _id}).exec(function( err, deleted) {
+      if( err ) {
+        console.error('Error deleting recipe', err);
+        res.send(500, err);
+      } else {
+        res.send( 200, deleted );
       }
     });
   }
-
 };

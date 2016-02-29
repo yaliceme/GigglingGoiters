@@ -100,11 +100,21 @@ angular.module('foodZen.services', [])
     });
   };
 
+    var deleteUserRecipe = function(recipe) {
+    return $http.delete('/api/users/recipes', {params: {recipe: recipe}})
+    .then(function (res) {
+      console.log('success deleting recipe');
+    }, function (error) {
+      console.error('error with deleting recipe');
+    });
+  };
+
   return {
     postIngredient: postIngredient,
     deleteIngredient: deleteIngredient,
     ingredients: ingredients,
-    getIngredients: getIngredients
+    getIngredients: getIngredients,
+    deleteUserRecipe: deleteUserRecipe
   };
 }])
 

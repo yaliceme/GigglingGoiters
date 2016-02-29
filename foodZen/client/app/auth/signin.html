@@ -45,14 +45,14 @@
           console.log("ID Token: " + id_token);
 
           //redirect to ingredients page:
-          $.get('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token, function( data) {
-            console.log('DATA FROM GET REQ=======>', data);
-            var clientKey = "769458325378-n76v7sfa442fku1aoe8qn8jbfdpv1jvk.apps.googleusercontent.com";
-            if(data.aud === clientKey) {
-              console.log('match=================================');
-              $location.path('/ingredients');
-            }
-          });
+          // $.get('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token='+id_token, function( data) {
+          //   console.log('DATA FROM GET REQ=======>', data);
+          //   var clientKey = "769458325378-n76v7sfa442fku1aoe8qn8jbfdpv1jvk.apps.googleusercontent.com";
+          //   if(data.aud === clientKey) {
+          //     console.log('MATCH');
+          //    window.location.replace('http://localhost3000/ingredients');
+          //  }
+          // });
         }
       </script>
   <div>

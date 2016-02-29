@@ -156,3 +156,12 @@ button.close.center {
 float: none; 
 }
 
+h3.error {
+  color: red;
+  text-align: center;
+}
+
+div.row.cartImages {
+  padding-top: 2em;
+}
+
