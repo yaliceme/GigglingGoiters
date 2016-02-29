@@ -4,7 +4,7 @@
 
 <div ng-show="singleRecipe.view" id="singleRecipe">
   <div class="recipe-table">
-    <h2>{{singleRecipe.recipe.data.title}}</h2>
+    <h2 class="grayStroke">{{singleRecipe.recipe.data.title}}</h2>
     <img class="recipe" ng-src="{{singleRecipe.recipe.data.image}}">
     <div ng-show="newRecipe"class="hover-btn col-md-12">
        <button type="button" class="close center" ng-click="saveUserRecipe(singleRecipe.recipe.data)">
@@ -40,7 +40,7 @@
 
 <!-- Display a user's saved recipes -->
 <div ng-show="savedRecipes" id="savedRecipes">
-<h2>Saved Recipes</h2>
+<h2 class="grayStroke">Saved Recipes</h2>
 <h3 class="error" ng-if="!data.savedRecipes.length">No recipes saved yet</h3>
 <table class="table">
   <tr ng-repeat="row in data.savedRecipes">
@@ -60,7 +60,7 @@
 
 <div class="spiffyGif col-md-2 col-md-offset-5" ng-show="spiffyGif"><img ng-src="../../assets/329.gif"></div>
 <div ng-show="loaded">
-<h2>Recipes</h2>
+<h2 class="grayStroke">Recipes</h2>
 
 <!-- Display 5 recipes based on a user's current cart -->
   <table class="table">
