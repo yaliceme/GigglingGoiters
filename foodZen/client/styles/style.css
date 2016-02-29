@@ -278,8 +278,11 @@ div.userIngredients {
   margin-bottom: 50px;
 }
 
-/*h2.blueStroke {
-  background-color: rgba(110, 137, 196, 0.87);
-  padding: 50px;
-  z-index: 20;
-}*/
+
+
+h2.grayStroke {
+  color: black;
+  font-size: 3em;
+   background: -webkit-radial-gradient(center, gray, white);
+   padding: 5px;
+}
