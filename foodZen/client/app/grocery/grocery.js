@@ -19,6 +19,7 @@ angular.module('foodZen.groceries', [])
   };
 
   $scope.groceriesFromRecipes = function() {
+    //debugger;
     if($scope.selected.length > 0){
       var ingredients = [];
       var index;
@@ -34,7 +35,7 @@ angular.module('foodZen.groceries', [])
       var inStock = $scope.data.ingredients;
       for(var k = 0; k < inStock.length; k++){
         index = ingredients.indexOf(inStock[k]);
-        if(index){
+        if(index !== -1){
           ingredients.splice(index, 1);
         }
       }
