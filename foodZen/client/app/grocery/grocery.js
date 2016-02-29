@@ -18,6 +18,35 @@ angular.module('foodZen.groceries', [])
     }
   };
 
+  $scope.groceriesFromRecipes = function() {
+    if($scope.selected.length > 0){
+      var ingredients = [];
+      var index;
+      for(var i = 0; i < $scope.selected.length; i++){
+        index = findWithAttr($scope.data.recipes, 'title', $scope.selected[i]);
+        var recipeIngredients = $scope.data.recipes[index].ingredients;
+        for(var j = 0; j < recipeIngredients.length; j++){
+          if(ingredients.indexOf(recipeIngredients[j].name) === -1){
+            ingredients.push(recipeIngredients[j].name);
+          }
+        }
+      }
+      var inStock = $scope.data.ingredients;
+      for(var k = 0; k < inStock.length; k++){
+        index = ingredients.indexOf(inStock[k]);
+        if(index){
+          ingredients.splice(index, 1);
+        }
+      }
+      console.log('stuff to grocery: ', ingredients);
+      Groceries.postGroceries(ingredients)
+      .then(function () {
+        $scope.selected = [];
+        $scope.updateGrocery();
+      })
+    }
+  };
+
   $scope.checkAll = function() {
     $scope.selected = angular.copy($scope.data.recipes);
   };
@@ -34,7 +63,6 @@ angular.module('foodZen.groceries', [])
       $scope.updateGrocery();
     });
     $scope.newGrocery = '';
-    console.log($scope.selected);
   };
 
   $scope.updateGrocery = function() {
