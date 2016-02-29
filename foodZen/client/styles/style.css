@@ -3,6 +3,10 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
+.instock {
+  text-decoration: line-through;
+}
+
 
 .navigation .logo {
   float: left;
@@ -175,6 +179,10 @@ button.close.saveRecipe {
 }
 
 button.close.center {
+float: none; 
+}
+
+button.close {
 float: none; 
 }
 

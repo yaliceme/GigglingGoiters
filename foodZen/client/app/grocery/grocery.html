@@ -7,7 +7,7 @@
     <li ng-repeat="recipe in data.recipes" ng-src="">
     <input type="checkbox" checklist-model="selected" checklist-value="recipe.title"><span> {{ recipe.title }}</span>
       <ul class="glist-ingredients">
-        <li ng-repeat='ingredient in recipe.ingredients'>{{ ingredient.name }}</li>
+        <li ng-repeat='ingredient in recipe.ingredients' ng-class="getClass(ingredient.name)">{{ ingredient.name }}</li>
       </ul>
     </li>
   </ul>
@@ -21,6 +21,6 @@
     <button type="submit" ng-click="addGrocery()">add</button>
   </div>
   <ul>
-    <li ng-repeat="grocery in data.groceries">{{ grocery }}<button ng-click="deleteGrocery(grocery)">delete</button></li>
+    <li ng-repeat="grocery in data.groceries">{{ grocery }}<button type="button" class="close" ng-click="deleteGrocery(grocery)">X</button></li>
   </ul>
 </div>

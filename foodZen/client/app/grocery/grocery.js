@@ -74,6 +74,12 @@ angular.module('foodZen.groceries', [])
     });
   };
 
+  $scope.getClass = function (ingredient) {
+    return {
+      instock: $scope.data.ingredients.indexOf(ingredient) !== -1
+    };
+  };
+
   $scope.updateIngredients = function() {
     Ingredients.getIngredients()
     .then(function(ingredients) {
