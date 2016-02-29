@@ -191,6 +191,47 @@ div.spiffyGif {
   padding: 50px;
 }
 
+/*
+**  Grocery list
+*/
+.glist-recipes {
+  width: 100%;
+  /*text-align: center;*/
+  padding: 25px;
+}
+
+ul.glist-recipe {
+  
+  text-align: center;
+}
+
+.glist-recipe span {
+  text-align: left;
+  font-weight: bold;
+}
+
+.glist-recipe li {
+  display: inline-block;
+  width: 40%;
+  vertical-align: top;
+  list-style: square;
+}
+
+.glist-recipe li:hover {
+  background-color: #F5F8FA;
+  
+}
+
+ul.glist-ingredients {
+
+  text-align: left;
+  padding: 10px;
+  list-style: square;
+}
+
+li.even {
+  color: red;
+}
 input.signup {
   margin-top: 20px;
 }
