@@ -38,14 +38,14 @@ module.exports = {
     User.findOne({ email: email })
       .exec(function(err, user) {
         if (!user) {
-          return helpers.errorHandler( {message: 'That email is not registered'}, req, res, next );
+          res.send(500, {error: 'no user'});
         } else {
           user.comparePasswords(password).then(function ( foundUser ) {
             if( foundUser ) {
               var token = jwt.encode(user, 'secret');
               res.json({token: token});
             } else {
-              return next( new Error('Wrong password'));
+              res.send(500, {error: 'wrong password'});
             }
           });
         }
@@ -58,7 +58,7 @@ module.exports = {
     findUser({email: email})
       .then(function (user) {
         if (user) {
-          next(new Error('User already exists!'));
+          res.send(500, {error: 'User exists already'});
         } else {
           return createUser({
             email: email,
