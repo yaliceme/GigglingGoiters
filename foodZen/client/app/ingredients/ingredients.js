@@ -6,6 +6,7 @@ angular.module('foodZen.ingredients', [])
   $anchorScroll.yOffset = 100;
   $scope.ingredientAdded = false;
   $scope.newIngredient = '';
+  var timeOfLastAdd;
 
   $scope.showDefaultCarts = function(id) {
     $scope.defaultCarts = !$scope.defaultCarts;
@@ -39,6 +40,21 @@ angular.module('foodZen.ingredients', [])
       });
   };
 
+  var displayIngredientMessage = function (ingredient) {
+    $scope.newIngredient = ingredient;
+    $scope.ingredientAdded = true;
+  };
+
+  var expireIngredientMessage = function (milliseconds) {
+    setTimeout(function() {
+      $scope.$apply(function() {
+        if ($scope.ingredientAdded === true && (Date.now() - timeOfLastAdd >= milliseconds)) {
+          $scope.ingredientAdded = false;
+        }
+      });
+    }, milliseconds);
+  };
+
   $scope.hitEnter = function($event, ingredient) {
     if($event.which === 13) {
       $scope.addIngredient(ingredient);
@@ -50,8 +66,9 @@ angular.module('foodZen.ingredients', [])
       initializeIngredients();
     });
     $scope.ingredient = '';
-    $scope.newIngredient = ingredient;
-    $scope.ingredientAdded = true;
+    timeOfLastAdd = Date.now();
+    displayIngredientMessage(ingredient);
+    expireIngredientMessage(3000);
   };
 
   $scope.removeIngredient = function(ingredient) {
