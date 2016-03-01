@@ -240,6 +240,8 @@ div.row.cartImages {
 
 div.spiffyGif {
   padding: 50px;
+  position: absolute;
+  z-index: 2;
 }
 
 /*

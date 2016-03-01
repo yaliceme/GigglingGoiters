@@ -55,12 +55,14 @@ angular.module('foodZen.groceries', [])
   };
 
   $scope.addGrocery = function () {
-    var arrayify = [];
-    arrayify.push($scope.newGrocery);
-    Groceries.postGroceries(arrayify)
-    .then(function () {
-      $scope.updateGrocery();
-    });
+    if($scope.newGrocery.replace(/\s/g, '') !== ''){
+      var arrayify = [];
+      arrayify.push($scope.newGrocery);
+      Groceries.postGroceries(arrayify)
+      .then(function () {
+        $scope.updateGrocery();
+      });
+    }
     $scope.newGrocery = '';
   };
 
@@ -94,7 +96,6 @@ angular.module('foodZen.groceries', [])
     Recipes.getUserRecipes()
     .then(function(recipes) {
       $scope.data.recipes = recipes;
-      //console.log('recipesssssss', $scope.data.recipes);
       for(var i = 0; i < recipes.length; i++){
         //gets extended info (ingredients) for each recipe
         Recipes.viewRecipe(recipes[i].id)

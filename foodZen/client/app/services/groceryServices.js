@@ -16,6 +16,9 @@ angular.module('foodZen.grocery-services', [])
     });
   };
 
+  //this function was written to take an array to be able to add
+  //more than one grocery items at a time.  if you want to add only one
+  //item, throw it in an array first plz
   var postGroceries = function(groceryArray) {
     return $http({
       method: 'POST',
