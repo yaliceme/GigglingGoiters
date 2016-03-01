@@ -338,3 +338,8 @@ input.error {
   border: solid 2px;
   border-color: red;
 }
+
+.ingredient-message {
+  margin-top: 15px;
+  height: 10px;
+}
