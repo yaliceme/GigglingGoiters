@@ -12,9 +12,10 @@
 <div class='signin'>
   <form name="signinForm" ng-submit='signin()'>
     <div class="row">
-      <input class="input-lg" type='email' placeholder="email" ng-model='user.email'>
-      <input class="input-lg" type="password" placeholder="password" ng-model='user.password'>
+      <input class="input-lg" ng-class='emailError ? "error" : "noError"' type='email' placeholder="email" ng-model='user.email'>
+      <input class="input-lg" ng-class='passwordError ? "error" : "noError"' type="password" placeholder="password" ng-model='user.password'>
     </div>
+    <h2 ng-show="error">{{ errorMessage }}</h2>
     <div class="row">
       <button class="col-md-2 col-md-offset-5 btn-lg signin btn-primary">Sign in</button>
     </div>
